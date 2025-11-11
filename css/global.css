@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scrollbar-width: auto;
+  scrollbar-color: var(--color-purple-primary) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 17px;
+  height: 17px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-purple-primary) !important;
+  background-image: none !important;
+  border-radius: 4px;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transition: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-purple-primary) !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--color-purple-primary) !important;
+  background-image: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
+  padding-top: 0;
+  opacity: 0;
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+::selection {
+  background-color: var(--color-purple-primary);
+  color: var(--color-text-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-purple-primary);
+  color: var(--color-text-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-purple-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:focus:not(.skip-link):not(.logo) {
+  outline: 2px solid var(--color-purple-primary);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all var(--transition-base);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.section {
+  padding: var(--spacing-3xl) 0;
+  scroll-margin-top: 90px;
+}
+
+#contact.section {
+  padding-bottom: var(--spacing-3xl);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mb-sm {
+  margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--spacing-lg);
+}
+
+.mb-xl {
+  margin-bottom: var(--spacing-xl);
+}
+
+.mt-sm {
+  margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+  margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+  margin-top: var(--spacing-lg);
+}
+
+.mt-xl {
+  margin-top: var(--spacing-xl);
+}
+
