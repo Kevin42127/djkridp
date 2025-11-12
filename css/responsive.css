@@ -55,6 +55,7 @@
     text-align: left;
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: 0;
+    color: var(--color-text-primary);
   }
   
   .header-right {
