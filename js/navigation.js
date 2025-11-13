@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function openMenu() {
+    const overlayOffset = header ? header.offsetHeight : 0;
     nav.classList.remove('hidden');
     nav.classList.add('active');
     if (mobileMenuToggle) {
@@ -39,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (navOverlay) {
       navOverlay.classList.add('active');
+      navOverlay.style.top = `${overlayOffset}px`;
+      navOverlay.style.left = '0';
+      navOverlay.style.right = '0';
+      navOverlay.style.bottom = '0';
+      navOverlay.style.height = `calc(100vh - ${overlayOffset}px)`;
     }
     document.body.style.overflow = 'hidden';
   }
@@ -55,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (navOverlay) {
       navOverlay.classList.remove('active');
+      navOverlay.style.top = '';
+      navOverlay.style.height = '';
+      navOverlay.style.left = '';
+      navOverlay.style.right = '';
+      navOverlay.style.bottom = '';
     }
     document.body.style.overflow = '';
   }
@@ -117,6 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
       nav.classList.remove('active', 'hidden');
       if (navOverlay) {
         navOverlay.classList.remove('active');
+        navOverlay.style.top = '';
+        navOverlay.style.height = '';
+        navOverlay.style.left = '';
+        navOverlay.style.right = '';
+        navOverlay.style.bottom = '';
       }
       if (mobileMenuToggle) {
         mobileMenuToggle.classList.remove('active');
