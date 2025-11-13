@@ -280,11 +280,14 @@
 
 .social-link {
   color: var(--color-text-white);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   transition: color var(--transition-base), opacity var(--transition-base);
-  padding: var(--spacing-xs);
+  padding: var(--spacing-md) var(--spacing-lg);
   border-radius: var(--border-radius-sm);
   opacity: 0.9;
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
 }
 
 .social-link:hover {
@@ -413,6 +416,7 @@
 .contact-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-md) var(--spacing-lg);
   background-color: var(--color-bg-primary);
@@ -420,6 +424,8 @@
   border-radius: var(--border-radius-md);
   color: var(--color-text-primary);
   font-weight: 500;
+  font-size: var(--font-size-base);
+  min-width: 120px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out, background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base);

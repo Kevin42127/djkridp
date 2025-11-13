@@ -186,6 +186,19 @@
   .header-right {
     display: none !important;
   }
+
+  .contact-links {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .contact-link {
+    width: auto;
+    min-width: auto;
+    flex: 0 1 auto;
+    padding: var(--spacing-md) var(--spacing-md);
+    white-space: nowrap;
+  }
 }
 
 
