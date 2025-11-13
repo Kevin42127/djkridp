@@ -112,6 +112,24 @@
   .section-title {
     font-size: var(--font-size-2xl);
   }
+
+  .footer-links {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--spacing-md);
+    align-items: stretch;
+  }
+
+  .social-link {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+
+  .copyright {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    justify-content: center;
+  }
 }
 
 @media (max-width: 480px) {

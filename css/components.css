@@ -436,11 +436,6 @@
   transform: translateY(0);
 }
 
-.contact-link:focus-visible {
-  outline: 2px solid var(--color-purple-primary);
-  outline-offset: 2px;
-}
-
 #contact .contact-link {
   background-color: transparent;
   border: 2px solid var(--color-purple-primary);
