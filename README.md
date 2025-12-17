@@ -47,5 +47,22 @@ DJKridP 的個人作品集網站，展示其作為多流派 DJ 的職業生涯�
 
 ## 部署
 
-這是一個靜態網站，可以直接部署到任何靜態主機服務（如 GitHub Pages、Netlify、Vercel 等）。
+### Vercel 部署（推薦）
+
+1. 將代碼推送到 GitHub 倉庫
+2. 在 Vercel 中導入專案
+3. 設置環境變數：
+   - 進入專案設置 (Project Settings)
+   - 選擇 Environment Variables
+   - 添加環境變數：
+     - **Name**: `GROQ_API_KEY`
+     - **Value**: 您的 Groq API 金鑰
+     - **Environment**: Production, Preview, Development（全部勾選）
+4. 重新部署專案
+
+### 其他平台
+
+這是一個靜態網站，可以直接部署到任何靜態主機服務（如 GitHub Pages、Netlify 等）。
+
+**注意**：AI 聊天功能需要後端支持，目前僅在 Vercel 上可用（使用 serverless functions）。
 
