@@ -97,6 +97,10 @@
     justify-content: center;
   }
   
+  #home {
+    padding-top: 70px;
+  }
+
   .section {
     padding: var(--spacing-2xl) 0;
   }
