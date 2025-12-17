@@ -189,8 +189,54 @@
         <span class="scroll-up-arrow"></span>
     </button>
 
+    <button class="ai-chat-button" aria-label="AI-Assistent" id="ai-chat-button">
+        <span class="material-symbols-outlined">smart_toy</span>
+    </button>
+
+    <div class="ai-chat-container" id="ai-chat-container">
+        <div class="ai-chat-header">
+            <h3>AI-Assistent</h3>
+            <div class="ai-chat-header-actions">
+                <button class="ai-chat-clear" aria-label="Verlauf löschen" id="ai-chat-clear" title="Verlauf löschen">
+                    <span class="material-symbols-outlined">delete</span>
+                </button>
+                <button class="ai-chat-close" aria-label="Schließen" id="ai-chat-close">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+        </div>
+        <div class="ai-chat-messages" id="ai-chat-messages">
+            <div class="ai-chat-empty-state" id="ai-chat-empty-state">
+                <p class="ai-chat-empty-text">Willkommen</p>
+            </div>
+        </div>
+        <div class="ai-chat-input-container">
+            <textarea class="ai-chat-input" id="ai-chat-input" placeholder="Geben Sie Ihre Frage ein..." aria-label="Nachricht eingeben" rows="1"></textarea>
+            <button class="ai-chat-send" aria-label="Senden" id="ai-chat-send">
+                <span class="material-symbols-outlined">send</span>
+            </button>
+        </div>
+        <div class="confirm-dialog-overlay" id="confirm-dialog-overlay">
+            <div class="confirm-dialog">
+                <div class="confirm-dialog-header">
+                    <span class="material-symbols-outlined confirm-dialog-icon">warning</span>
+                    <h3 class="confirm-dialog-title">Verlauf löschen</h3>
+                </div>
+                <div class="confirm-dialog-content">
+                    <p>Möchten Sie wirklich den gesamten Verlauf löschen? Diese Aktion kann nicht rückgängig gemacht werden.</p>
+                </div>
+                <div class="confirm-dialog-actions">
+                    <button class="confirm-dialog-btn confirm-dialog-cancel" id="confirm-dialog-cancel">Abbrechen</button>
+                    <button class="confirm-dialog-btn confirm-dialog-confirm" id="confirm-dialog-confirm">Löschen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/animations.js"></script>
+    <script src="js/ai-chat.js"></script>
 </body>
 </html>
