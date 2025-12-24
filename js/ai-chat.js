@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     isOpen = !isOpen;
     if (isOpen) {
       chatContainer.classList.add('active');
-      chatInput.focus();
     } else {
       chatContainer.classList.remove('active');
     }
@@ -352,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } finally {
       isSending = false;
       chatSend.disabled = false;
-      chatInput.focus();
     }
   }
 

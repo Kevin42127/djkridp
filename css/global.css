@@ -9,6 +9,9 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: auto;
   scrollbar-color: var(--color-purple-primary) transparent;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 ::-webkit-scrollbar {

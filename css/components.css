@@ -940,6 +940,8 @@ body > footer.footer {
   background-color: var(--color-bg-secondary);
   transition: border-color var(--transition-base), background-color var(--transition-base);
   box-sizing: border-box;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
 }
 
 .ai-chat-input::-webkit-scrollbar {
@@ -955,6 +957,8 @@ body > footer.footer {
   outline: none;
   border-color: #F59E0B;
   background-color: var(--color-bg-primary);
+  transform: scale(1);
+  -webkit-transform: scale(1);
 }
 
 .ai-chat-send {
