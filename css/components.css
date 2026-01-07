@@ -1020,6 +1020,14 @@ body > footer.footer {
   line-height: 1.6;
 }
 
+.ai-chat-message li:first-child {
+  margin-top: 0;
+}
+
+.ai-chat-message li:last-child {
+  margin-bottom: 0;
+}
+
 .ai-chat-message li::before {
   content: "•";
   color: var(--color-purple-primary);
