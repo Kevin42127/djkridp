@@ -530,4 +530,16 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleChat();
     }
   });
+
+  const quickQuestionBtns = document.querySelectorAll('.quick-question-btn');
+  quickQuestionBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const question = btn.getAttribute('data-question');
+      if (question) {
+        chatInput.value = question;
+        autoResizeTextarea(chatInput);
+        sendMessage();
+      }
+    });
+  });
 });
