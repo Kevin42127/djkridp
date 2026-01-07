@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const [domain, info] of Object.entries(platforms)) {
           if (url.includes(domain)) {
-            const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link"><span class="material-symbols-outlined">${info.icon}</span><span>${info.name}</span><span class="material-symbols-outlined link-icon">open_in_new</span></a>`;
+            const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link">${info.name}</a>`;
             return hasTrailingPunct ? link + match.slice(url.length) : link;
           }
         }
