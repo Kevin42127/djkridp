@@ -87,6 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
+    formatted = formatBold(formatted);
+    
+    formatted = formatList(formatted);
+    
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
         return '<br>';
@@ -99,7 +103,50 @@ document.addEventListener('DOMContentLoaded', () => {
     return formatted;
   }
 
+  function formatBold(text) {
+    return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  }
+
+  function formatList(text) {
+    const lines = text.split('\n');
+    let inList = false;
+    let result = [];
+    
+    for (let line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+        if (!inList) {
+          result.push('<ul>');
+          inList = true;
+        }
+        const content = trimmed.startsWith('- ') ? trimmed.substring(2) : trimmed.substring(2);
+        result.push(`<li>${content}</li>`);
+      } else {
+        if (inList) {
+          result.push('</ul>');
+          inList = false;
+        }
+        result.push(line);
+      }
+    }
+    
+    if (inList) result.push('</ul>');
+    
+    return result.join('\n');
+  }
+
   function linkify(text) {
+    const platforms = {
+      'twitch.tv': { name: 'Twitch', icon: 'live_tv' },
+      'instagram.com': { name: 'Instagram', icon: 'photo_camera' },
+      'tiktok.com': { name: 'TikTok', icon: 'music_note' },
+      'facebook.com': { name: 'Facebook', icon: 'groups' },
+      'spotify.com': { name: 'Spotify', icon: 'library_music' },
+      'discord.gg': { name: 'Discord', icon: 'forum' },
+      'whatsapp.com': { name: 'WhatsApp', icon: 'chat' },
+      'streamelements.com': { name: 'StreamElements', icon: 'paid' }
+    };
+
     const urlRegex = /\b(https?:\/\/[^\s<>"']+)/g;
     return text.replace(urlRegex, (match) => {
       let url = match;
@@ -122,6 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!urlObj.hostname || urlObj.hostname.length < 3) {
           return match;
         }
+
+        for (const [domain, info] of Object.entries(platforms)) {
+          if (url.includes(domain)) {
+            const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link"><span class="material-symbols-outlined">${info.icon}</span><span>${info.name}</span><span class="material-symbols-outlined link-icon">open_in_new</span></a>`;
+            return hasTrailingPunct ? link + match.slice(url.length) : link;
+          }
+        }
+
         const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-chat-link">${url}</a>`;
         return hasTrailingPunct ? link + match.slice(url.length) : link;
       } catch (e) {

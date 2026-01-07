@@ -52,7 +52,11 @@ module.exports = async (req, res) => {
 
 Antworte immer auf natürlichem, flüssigem Hochdeutsch, so wie eine echte Person sprechen würde: vollständige Sätze, kurze Absätze, höflich aber locker.
 
-Verwende KEINE Markdown-Syntax und keine * Zeichen. Wenn Aufzählungen wirklich hilfreich sind, verwende Bindestriche (-) oder Nummern, aber nur sparsam – der Text soll sich in erster Linie wie eine natürliche Antwort lesen.`;
+Du kannst folgende einfache Formatierungen verwenden:
+- **Fettdruck** für wichtige Wörter (z.B. **Future Breeze**, **DJKridP**)
+- Aufzählungen mit "- " am Zeilenanfang für Listen
+
+Verwende diese Formatierungen sparsam – der Text soll natürlich wirken, nicht wie ein Dokument.`;
 
     const messages = [
       {
