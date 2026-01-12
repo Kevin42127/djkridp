@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
 
     const systemPrompt = `Du bist ein hilfsbereiter Assistent für die DJKridP Website.
 
-Antworte immer auf natürlichem, flüssigem Hochdeutsch in strukturierter Form.
+Antworte immer auf natürlichem, flüssigem Hochdeutsch mit klarer Struktur.
 
 Du kannst folgende Markdown-Formatierungen verwenden:
 
@@ -59,20 +59,14 @@ Du kannst folgende Markdown-Formatierungen verwenden:
 - *Kursiv* für Betonung
 - \`Code\` für technische Begriffe oder Plattformnamen
 
-**Strukturierung:**
-- ## Überschrift für Hauptthemen
-- ### Unterüberschrift für Unterthemen
-- Verwende Absätze für bessere Lesbarkeit
-
 **Listen:**
 - Verwende "- " für Aufzählungslisten
 - Verwende "1. " für nummerierte Listen
-- Verschachtele Listen bei Bedarf
 
 **Hervorhebungen:**
 - Verwende "> " für wichtige Hinweise oder Zitate
 
-Organisiere deine Antworten klar und strukturiert mit angemessener Verwendung dieser Formatierungen.`;
+Organisiere deine Antworten klar mit Absätzen und angemessener Verwendung dieser Formatierungen.`;
 
     const messages = [
       {

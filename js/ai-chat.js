@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatCode(formatted);
     formatted = formatBlockquote(formatted);
     formatted = formatLists(formatted);
-    formatted = formatHeadings(formatted);
     formatted = formatBoldAndItalic(formatted);
     
     formatted = formatted.split('\n').map(line => {
@@ -102,22 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatted.replace(/\n/g, '<br>');
     
     return formatted;
-  }
-
-  function formatHeadings(text) {
-    const lines = text.split('\n');
-    return lines.map(line => {
-      if (line.startsWith('### ')) {
-        return `<h3 class="ai-heading-3">${line.substring(4)}</h3>`;
-      }
-      if (line.startsWith('## ')) {
-        return `<h2 class="ai-heading-2">${line.substring(3)}</h2>`;
-      }
-      if (line.startsWith('# ')) {
-        return `<h1 class="ai-heading-1">${line.substring(2)}</h1>`;
-      }
-      return line;
-    }).join('\n');
   }
 
   function formatBoldAndItalic(text) {
@@ -168,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let line of lines) {
       const trimmed = line.trim();
       
-      if (trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<pre') || trimmed.startsWith('<code')) {
+      if (trimmed.startsWith('<blockquote') || trimmed.startsWith('<pre') || trimmed.startsWith('<code')) {
         if (inUl) {
           result.push('</ul>');
           inUl = false;
