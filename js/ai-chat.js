@@ -86,10 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatted.replace(/\r/g, '\n');
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
-    formatted = formatCode(formatted);
-    formatted = formatBlockquote(formatted);
     formatted = formatLists(formatted);
-    formatted = formatBoldAndItalic(formatted);
     
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
@@ -103,45 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     return formatted;
   }
 
-  function formatBoldAndItalic(text) {
-    text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
-    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/(?<!\n[-*•]\s)\*(?!\s)(.+?)\*/g, '<em>$1</em>');
-    return text;
-  }
-
-  function formatCode(text) {
-    text = text.replace(/```([\s\S]+?)```/g, '<pre class="ai-code-block"><code>$1</code></pre>');
-    text = text.replace(/`([^`]+)`/g, '<code class="ai-inline-code">$1</code>');
-    return text;
-  }
-
-  function formatBlockquote(text) {
-    const lines = text.split('\n');
-    let inQuote = false;
-    let result = [];
-    
-    for (let line of lines) {
-      if (line.trim().startsWith('> ')) {
-        if (!inQuote) {
-          result.push('<blockquote class="ai-blockquote">');
-          inQuote = true;
-        }
-        result.push(line.trim().substring(2));
-      } else {
-        if (inQuote) {
-          result.push('</blockquote>');
-          inQuote = false;
-        }
-        result.push(line);
-      }
-    }
-    
-    if (inQuote) result.push('</blockquote>');
-    
-    return result.join('\n');
-  }
-
   function formatLists(text) {
     const lines = text.split('\n');
     let inUl = false;
@@ -150,19 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     for (let line of lines) {
       const trimmed = line.trim();
-      
-      if (trimmed.startsWith('<blockquote') || trimmed.startsWith('<pre') || trimmed.startsWith('<code')) {
-        if (inUl) {
-          result.push('</ul>');
-          inUl = false;
-        }
-        if (inOl) {
-          result.push('</ol>');
-          inOl = false;
-        }
-        result.push(line);
-        continue;
-      }
       
       const ulMatch = trimmed.match(/^[-*•]\s+(.+)/);
       const olMatch = trimmed.match(/^(\d+)\.\s+(.+)/);

@@ -1004,51 +1004,6 @@ body > footer.footer {
   opacity: 0.8;
 }
 
-.ai-chat-message strong {
-  color: var(--color-purple-primary);
-  font-weight: 600;
-}
-
-.ai-chat-message em {
-  font-style: italic;
-  color: var(--color-text-secondary);
-}
-
-.ai-inline-code {
-  background-color: var(--color-bg-secondary);
-  color: var(--color-purple-dark);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  font-size: 0.9em;
-}
-
-.ai-code-block {
-  background-color: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: 12px;
-  margin: 12px 0;
-  overflow-x: auto;
-}
-
-.ai-code-block code {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  font-size: 0.9em;
-  line-height: 1.5;
-  color: var(--color-text-primary);
-}
-
-.ai-blockquote {
-  border-left: 4px solid var(--color-purple-primary);
-  padding: 8px 12px;
-  margin: 12px 0;
-  background-color: var(--color-bg-secondary);
-  border-radius: 0 8px 8px 0;
-  color: var(--color-text-secondary);
-  font-style: italic;
-}
-
 .ai-chat-message ul {
   list-style: none;
   padding-left: 0;

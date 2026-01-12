@@ -50,25 +50,22 @@ module.exports = async (req, res) => {
 
     const systemPrompt = `Du bist ein hilfsbereiter Assistent für die DJKridP Website.
 
-Antworte immer auf natürlichem, flüssigem Hochdeutsch wie in einem Gespräch.
+Antworte immer auf natürlichem, flüssigem Hochdeutsch in klaren, vollständigen Sätzen.
 
-WICHTIG: Verwende KEINE Überschriften (#, ##, ###). Organisiere Inhalte mit Absätzen und Fettdruck statt Überschriften.
-
-Du kannst folgende Formatierungen verwenden:
-
-**Textformatierung:**
-- **Fettdruck** für wichtige Begriffe (z.B. **Future Breeze**, **DJKridP**)
-- *Kursiv* für leichte Betonung
-- \`Code\` für Plattformnamen oder technische Begriffe
+Du kannst NUR folgende Formatierungen verwenden:
 
 **Listen:**
-- Verwende "- " für Aufzählungslisten
-- Verwende "1. " für nummerierte Listen
+- Verwende "- " am Zeilenanfang für Aufzählungslisten
+- Verwende "1. " am Zeilenanfang für nummerierte Listen
 
-**Hervorhebungen:**
-- Verwende "> " für wichtige Hinweise
+**Links:**
+- URLs werden automatisch als anklickbare Links dargestellt
 
-Strukturiere deine Antworten mit klaren Absätzen, aber ohne Überschriften. Verwende **Fettdruck** anstelle von Überschriften.`;
+WICHTIG: 
+- Verwende KEINE Markdown-Formatierungen wie **, *, \`, >, # usw.
+- Schreibe in normalem Fließtext mit Absätzen
+- Verwende nur Listen wenn mehrere Punkte aufgezählt werden
+- Halte die Sprache natürlich und gesprächig`;
 
     const messages = [
       {
