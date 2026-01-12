@@ -86,10 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatted.replace(/\r/g, '\n');
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
-    formatted = formatHeadings(formatted);
     formatted = formatCode(formatted);
     formatted = formatBlockquote(formatted);
     formatted = formatLists(formatted);
+    formatted = formatHeadings(formatted);
     formatted = formatBoldAndItalic(formatted);
     
     formatted = formatted.split('\n').map(line => {
@@ -167,6 +167,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     for (let line of lines) {
       const trimmed = line.trim();
+      
+      if (trimmed.startsWith('<h') || trimmed.startsWith('<blockquote') || trimmed.startsWith('<pre') || trimmed.startsWith('<code')) {
+        if (inUl) {
+          result.push('</ul>');
+          inUl = false;
+        }
+        if (inOl) {
+          result.push('</ol>');
+          inOl = false;
+        }
+        result.push(line);
+        continue;
+      }
+      
       const ulMatch = trimmed.match(/^[-*•]\s+(.+)/);
       const olMatch = trimmed.match(/^(\d+)\.\s+(.+)/);
       
