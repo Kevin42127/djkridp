@@ -397,7 +397,7 @@
 }
 
 .spotify-embed-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: var(--spacing-3xl) auto 0;
   padding: var(--spacing-xl);
   background: var(--color-bg-secondary);
