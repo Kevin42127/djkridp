@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
     formatted = formatHeadings(formatted);
-    formatted = formatBoldAndItalic(formatted);
     formatted = formatCode(formatted);
     formatted = formatBlockquote(formatted);
     formatted = formatLists(formatted);
+    formatted = formatBoldAndItalic(formatted);
     
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function formatBoldAndItalic(text) {
     text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
     text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    text = text.replace(/(?<!\n[-*•]\s)\*(?!\s)(.+?)\*/g, '<em>$1</em>');
     return text;
   }
 
