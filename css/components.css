@@ -396,7 +396,28 @@
   margin-top: var(--spacing-xl);
 }
 
+.spotify-embed-container {
+  max-width: 800px;
+  margin: var(--spacing-3xl) auto 0;
+  padding: var(--spacing-xl);
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+}
 
+.spotify-embed-container h2 {
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-purple-primary);
+  text-align: center;
+}
+
+.spotify-embed-container iframe {
+  display: block;
+  width: 100%;
+  border-radius: var(--border-radius-md);
+}
 
 .contact-info {
   max-width: 600px;
