@@ -84,12 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     formatted = formatted.replace(/\r\n/g, '\n');
     formatted = formatted.replace(/\r/g, '\n');
-    
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
-    formatted = formatBold(formatted);
-    
-    formatted = formatList(formatted);
+    formatted = formatHeadings(formatted);
+    formatted = formatBoldAndItalic(formatted);
+    formatted = formatCode(formatted);
+    formatted = formatBlockquote(formatted);
+    formatted = formatLists(formatted);
     
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
@@ -103,34 +104,107 @@ document.addEventListener('DOMContentLoaded', () => {
     return formatted;
   }
 
-  function formatBold(text) {
-    return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  function formatHeadings(text) {
+    const lines = text.split('\n');
+    return lines.map(line => {
+      if (line.startsWith('### ')) {
+        return `<h3 class="ai-heading-3">${line.substring(4)}</h3>`;
+      }
+      if (line.startsWith('## ')) {
+        return `<h2 class="ai-heading-2">${line.substring(3)}</h2>`;
+      }
+      if (line.startsWith('# ')) {
+        return `<h1 class="ai-heading-1">${line.substring(2)}</h1>`;
+      }
+      return line;
+    }).join('\n');
   }
 
-  function formatList(text) {
+  function formatBoldAndItalic(text) {
+    text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+    text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+    return text;
+  }
+
+  function formatCode(text) {
+    text = text.replace(/```([\s\S]+?)```/g, '<pre class="ai-code-block"><code>$1</code></pre>');
+    text = text.replace(/`([^`]+)`/g, '<code class="ai-inline-code">$1</code>');
+    return text;
+  }
+
+  function formatBlockquote(text) {
     const lines = text.split('\n');
-    let inList = false;
+    let inQuote = false;
     let result = [];
     
     for (let line of lines) {
-      const trimmed = line.trim();
-      if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
-        if (!inList) {
-          result.push('<ul>');
-          inList = true;
+      if (line.trim().startsWith('> ')) {
+        if (!inQuote) {
+          result.push('<blockquote class="ai-blockquote">');
+          inQuote = true;
         }
-        const content = trimmed.startsWith('- ') ? trimmed.substring(2) : trimmed.substring(2);
-        result.push(`<li>${content}</li>`);
+        result.push(line.trim().substring(2));
       } else {
-        if (inList) {
-          result.push('</ul>');
-          inList = false;
+        if (inQuote) {
+          result.push('</blockquote>');
+          inQuote = false;
         }
         result.push(line);
       }
     }
     
-    if (inList) result.push('</ul>');
+    if (inQuote) result.push('</blockquote>');
+    
+    return result.join('\n');
+  }
+
+  function formatLists(text) {
+    const lines = text.split('\n');
+    let inUl = false;
+    let inOl = false;
+    let result = [];
+    
+    for (let line of lines) {
+      const trimmed = line.trim();
+      const ulMatch = trimmed.match(/^[-*•]\s+(.+)/);
+      const olMatch = trimmed.match(/^(\d+)\.\s+(.+)/);
+      
+      if (ulMatch) {
+        if (inOl) {
+          result.push('</ol>');
+          inOl = false;
+        }
+        if (!inUl) {
+          result.push('<ul>');
+          inUl = true;
+        }
+        result.push(`<li>${ulMatch[1]}</li>`);
+      } else if (olMatch) {
+        if (inUl) {
+          result.push('</ul>');
+          inUl = false;
+        }
+        if (!inOl) {
+          result.push('<ol>');
+          inOl = true;
+        }
+        result.push(`<li>${olMatch[2]}</li>`);
+      } else {
+        if (inUl) {
+          result.push('</ul>');
+          inUl = false;
+        }
+        if (inOl) {
+          result.push('</ol>');
+          inOl = false;
+        }
+        result.push(line);
+      }
+    }
+    
+    if (inUl) result.push('</ul>');
+    if (inOl) result.push('</ol>');
     
     return result.join('\n');
   }
