@@ -413,6 +413,17 @@
   text-align: center;
 }
 
+.spotify-link {
+  color: var(--color-purple-primary);
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.spotify-link:hover {
+  color: var(--color-purple-dark);
+  text-decoration: underline;
+}
+
 .spotify-embed-container iframe {
   display: block;
   width: 100%;
