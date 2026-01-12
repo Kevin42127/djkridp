@@ -10,18 +10,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmDialogCancel = document.getElementById('confirm-dialog-cancel');
   const confirmDialogConfirm = document.getElementById('confirm-dialog-confirm');
   const emptyState = document.getElementById('ai-chat-empty-state');
+  const chatTooltip = document.getElementById('ai-chat-tooltip');
 
   const API_URL = (window.location.protocol === 'file:' || window.location.hostname === '') 
     ? 'http://localhost:3000/api/chat' 
     : window.location.origin + '/api/chat';
 
   const STORAGE_KEY = 'ai_chat_history';
+  const TOOLTIP_SEEN_KEY = 'ai_chat_tooltip_seen';
 
   let isOpen = false;
   let isSending = false;
   let messageHistory = [];
   let virtualScrollEnabled = false;
   const VIRTUAL_SCROLL_THRESHOLD = 50;
+  
+  function showTooltip() {
+    const hasSeenTooltip = localStorage.getItem(TOOLTIP_SEEN_KEY);
+    
+    if (!hasSeenTooltip && chatTooltip) {
+      setTimeout(() => {
+        chatTooltip.classList.add('show');
+        
+        setTimeout(() => {
+          chatTooltip.classList.remove('show');
+          localStorage.setItem(TOOLTIP_SEEN_KEY, 'true');
+        }, 5000);
+      }, 2000);
+    }
+  }
+  
+  showTooltip();
 
   function autoResizeTextarea(el) {
     el.style.height = 'auto';
