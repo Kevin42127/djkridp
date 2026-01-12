@@ -953,7 +953,9 @@ body > footer.footer {
 }
 
 .ai-chat-message br {
-  line-height: 1.6;
+  display: block;
+  margin: 8px 0;
+  content: "";
 }
 
 .ai-chat-message.mine {
@@ -1010,13 +1012,13 @@ body > footer.footer {
 .ai-chat-message ul {
   list-style: none;
   padding-left: 0;
-  margin: 4px 0;
+  margin: 8px 0;
 }
 
 .ai-chat-message li {
-  padding-left: 1.5em;
+  padding-left: 1.875rem;
   position: relative;
-  margin: 4px 0;
+  margin: 8px 0;
   line-height: 1.6;
 }
 
@@ -1033,7 +1035,7 @@ body > footer.footer {
   color: var(--color-purple-primary);
   font-weight: bold;
   position: absolute;
-  left: 0.5em;
+  left: 0.625rem;
 }
 
 .ai-platform-link {
