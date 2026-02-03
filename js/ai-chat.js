@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmDialogConfirm = document.getElementById('confirm-dialog-confirm');
   const emptyState = document.getElementById('ai-chat-empty-state');
 
-  const API_URL = (window.location.protocol === 'file:' || window.location.hostname === '') 
-    ? 'http://localhost:3000/api/chat' 
-    : window.location.origin + '/api/chat';
+  const API_URL = '/api/chat';
 
   const STORAGE_KEY = 'ai_chat_history';
 
@@ -66,6 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         emptyState.classList.remove('hidden');
       }
+    }
+    
+    // 更新刪除按鈕狀態
+    if (chatClear) {
+      chatClear.disabled = !hasMessages;
+      chatClear.style.opacity = hasMessages ? '1' : '0.5';
+      chatClear.style.cursor = hasMessages ? 'pointer' : 'not-allowed';
     }
   }
 
@@ -562,9 +567,12 @@ document.addEventListener('DOMContentLoaded', () => {
   chatButton.addEventListener('click', toggleChat);
   chatClose.addEventListener('click', toggleChat);
   chatClear.addEventListener('click', () => {
-    showConfirmDialog(() => {
-      clearHistory();
-    });
+    const hasMessages = messageHistory.length > 0 && messageHistory.some(msg => msg.content && msg.content.trim());
+    if (hasMessages) {
+      showConfirmDialog(() => {
+        clearHistory();
+      });
+    }
   });
 
   chatSend.addEventListener('click', sendMessage);
