@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
+  const logo = document.querySelector('.logo');
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const nav = document.querySelector('.nav');
   const header = document.querySelector('.header');
@@ -72,6 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isMobileMenuActive() {
     return nav && nav.classList.contains('active') && window.innerWidth <= 768;
+  }
+
+  // 處理 logo 點擊
+  if (logo) {
+    logo.addEventListener('click', () => {
+      const target = logo.getAttribute('data-target');
+      if (target) {
+        smoothScrollTo(`#${target}`);
+        if (isMobileMenuActive()) {
+          closeMenu();
+        }
+      }
+    });
   }
 
   navLinks.forEach(link => {

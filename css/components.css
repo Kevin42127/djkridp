@@ -39,6 +39,10 @@
   transition: color var(--transition-base);
   display: inline-block;
   outline: none !important;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .logo:focus,
