@@ -89,7 +89,7 @@ a {
   transition: color var(--transition-base);
 }
 
-a:focus:not(.skip-link):not(.logo):not(.contact-link) {
+a:focus:not(.skip-link):not(.logo):not(.contact-link):not(.spotify-link) {
   outline: 2px solid var(--color-purple-primary);
   outline-offset: 2px;
 }
