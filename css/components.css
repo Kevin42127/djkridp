@@ -567,7 +567,7 @@
   height: 3px;
   background-color: var(--color-text-white);
   border-radius: 2px;
-  transition: all var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform-origin: center;
 }
 
@@ -688,12 +688,13 @@ body > footer.footer {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(17, 24, 39, 0.65);
+  background: rgba(17, 24, 39, 0.5);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-base), visibility var(--transition-base);
-  z-index: 900;
+  transition: opacity 0.3s ease-in-out, 
+              visibility 0.3s ease-in-out;
+  z-index: 998;
 }
 
 .nav-overlay.active {
