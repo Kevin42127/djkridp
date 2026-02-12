@@ -91,21 +91,6 @@
   text-decoration: none;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-text-white);
-  transition: width 0.5s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
 .nav-link:focus,
 .nav-link:focus-visible,
 .nav-link:focus-within {
