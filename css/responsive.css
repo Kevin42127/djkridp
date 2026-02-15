@@ -225,7 +225,7 @@
   .nav-link {
     text-align: center !important;
     padding: var(--spacing-sm) var(--spacing-md) !important;
-    border-radius: 0 !important;
+    border-radius: 50px !important;
   }
   
   .mobile-menu-toggle {
