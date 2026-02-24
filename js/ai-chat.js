@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     isOpen = !isOpen;
     if (isOpen) {
       chatContainer.classList.add('active');
+      chatButton.style.display = 'none';
     } else {
       chatContainer.classList.remove('active');
+      chatButton.style.display = 'flex';
     }
   }
 

@@ -9,43 +9,38 @@
   }
   
   .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
     background-color: var(--color-bg-primary);
-    border-left: 1px solid var(--color-border);
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
-    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                opacity 0.3s ease-in-out,
-                visibility 0.3s ease-in-out;
+    border: 1px solid var(--color-border);
+    border-top: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
     opacity: 0;
     visibility: hidden;
     z-index: 999;
-    overflow-y: auto;
-    transform: translateX(0);
+    transform: translateY(-10px);
   }
   
   .nav.active {
-    right: 0;
     opacity: 1;
     visibility: visible;
-    transform: translateX(0);
+    transform: translateY(0);
   }
   
   .nav:not(.active):not(.hidden) {
-    right: -100%;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(20px);
+    transform: translateY(-10px);
   }
   
   .nav.hidden {
-    right: -100%;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(20px);
+    transform: translateY(-10px);
   }
   
   .nav-list {
