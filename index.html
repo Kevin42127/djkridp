@@ -162,15 +162,26 @@
 
                     <!-- 直播時顯示播放器 -->
                     <div id="twitch-live-view" class="twitch-official-embed" style="display: none;">
-                        <div class="twitch-player-wrapper">
-                            <iframe 
-                                src="https://player.twitch.tv/?channel=djkridp&parent=djkridp.vercel.app&muted=true"
-                                height="450"
-                                width="100%"
-                                frameborder="0"
-                                scrolling="no"
-                                allowfullscreen>
-                            </iframe>
+                        <div class="twitch-content">
+                            <div class="twitch-player-wrapper">
+                                <iframe 
+                                    src="https://player.twitch.tv/?channel=djkridp&parent=djkridp.vercel.app&muted=true"
+                                    height="450"
+                                    width="100%"
+                                    frameborder="0"
+                                    scrolling="no"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <div class="twitch-chat-wrapper">
+                                <iframe 
+                                    src="https://www.twitch.tv/embed/djkridp/chat?parent=djkridp.vercel.app"
+                                    height="450"
+                                    width="100%"
+                                    frameborder="0"
+                                    scrolling="no">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
