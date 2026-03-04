@@ -665,11 +665,37 @@
   width: 100%;
 }
 
-.twitch-player-wrapper iframe {
-  width: 100%;
-  height: 400px;
+.twitch-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.twitch-control-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: #9146FF;
+  color: white;
+  text-decoration: none;
   border: none;
-  display: block;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.twitch-control-btn:hover {
+  background-color: #7B3FF2;
+  transform: translateY(-1px);
+}
+
+.twitch-control-btn:active {
+  transform: translateY(0);
 }
 
 .twitch-chat-wrapper {
