@@ -163,15 +163,22 @@
                     <!-- 直播時顯示播放器 -->
                     <div id="twitch-live-view" class="twitch-official-embed" style="display: none;">
                         <div class="twitch-player-wrapper">
-                            <iframe 
-                                id="twitch-player"
-                                src="https://player.twitch.tv/?channel=djkridp&parent=localhost&muted=true"
-                                height="400"
-                                width="100%"
-                                frameborder="0"
-                                scrolling="no"
-                                allowfullscreen>
-                            </iframe>
+                            <div id="twitch-embed"></div>
+                            <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+                            <script type="text/javascript">
+                                var options = {
+                                    width: "100%",
+                                    height: 400,
+                                    channel: "djkridp",
+                                    layout: "video",
+                                    autoplay: false,
+                                    muted: true
+                                };
+                                var player = new Twitch.Player("twitch-embed", options);
+                                player.addEventListener(Twitch.Player.READY, function() {
+                                    console.log("Twitch 播放器準備完成");
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>

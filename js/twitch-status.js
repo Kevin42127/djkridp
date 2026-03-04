@@ -52,15 +52,8 @@ class TwitchStatusChecker {
     }
 
     ensurePlayerLoaded() {
-        const player = document.getElementById('twitch-player');
-        if (player) {
-            // 重新載入播放器以確保自動播放
-            const currentSrc = player.src;
-            player.src = '';
-            setTimeout(() => {
-                player.src = currentSrc;
-            }, 100);
-        }
+        // JavaScript 播放器會自動初始化，不需要重新載入
+        console.log('Twitch JavaScript 播放器已準備');
     }
 
     startAutoCheck() {
