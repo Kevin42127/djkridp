@@ -163,38 +163,19 @@
                     <!-- 直播時顯示播放器 -->
                     <div id="twitch-live-view" class="twitch-official-embed" style="display: none;">
                         <div class="twitch-player-wrapper">
-                            <div id="twitch-embed"></div>
-                            <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-                            <script type="text/javascript">
-                                var options = {
-                                    width: "100%",
-                                    height: 400,
-                                    channel: "djkridp",
-                                    layout: "video",
-                                    autoplay: false,
-                                    muted: true
-                                };
-                                var player = new Twitch.Player("twitch-embed", options);
-                                player.addEventListener(Twitch.Player.READY, function() {
-                                    console.log("Twitch 播放器準備完成");
-                                    // 嘗試播放
-                                    setTimeout(function() {
-                                        player.play();
-                                    }, 1000);
-                                });
-                                // 添加播放控制
-                                window.twitchPlayer = player;
-                            </script>
-                            <div class="twitch-controls">
-                                <button class="twitch-control-btn" onclick="window.twitchPlayer.play()">
-                                    ▶️ Abspielen
-                                </button>
-                                <button class="twitch-control-btn" onclick="window.twitchPlayer.pause()">
-                                    ⏸️ Pausieren
-                                </button>
-                                <button class="twitch-control-btn" onclick="window.open('https://www.twitch.tv/djkridp', '_blank')">
-                                    🔗 Auf Twitch ansehen
-                                </button>
+                            <div class="twitch-live-preview">
+                                <img src="https://static-cdn.jtvnw.net/previews-ttv/live_user_djkridp-1000x400.jpg" 
+                                     alt="Twitch Live Preview" 
+                                     class="twitch-preview-image">
+                                <div class="twitch-live-overlay">
+                                    <div class="twitch-live-badge">🔴 LIVE</div>
+                                    <div class="twitch-live-info">
+                                        <p>Jetzt live auf Twitch!</p>
+                                        <button class="twitch-watch-btn" onclick="window.open('https://www.twitch.tv/djkridp', '_blank')">
+                                            🔗 Auf Twitch ansehen
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
