@@ -462,11 +462,36 @@
   color: #9146FF;
   text-decoration: underline;
   transition: all 0.3s ease;
+  outline: none !important; /* 強制移除所有焦點外框 */
 }
 
 .twitch-link:hover {
   color: #7B3FF2;
   text-decoration: underline;
+}
+
+.twitch-link:focus {
+  outline: none !important; /* 強制移除焦點外框 */
+  box-shadow: none !important; /* 移除任何陰影效果 */
+}
+
+.twitch-link:focus-visible {
+  outline: none !important; /* 強制移除可見焦點外框 */
+  box-shadow: none !important; /* 移除任何陰影效果 */
+}
+
+.twitch-link:focus:not(:focus-visible) {
+  outline: none !important; /* 強制移除非鍵盤焦點外框 */
+  box-shadow: none !important; /* 移除任何陰影效果 */
+}
+
+/* 移除所有可能的聚焦效果 */
+.twitch-link::-moz-focus-inner {
+  border: 0;
+}
+
+.twitch-link:-moz-focusring {
+  outline: none;
 }
 
 .twitch-offline-view {
