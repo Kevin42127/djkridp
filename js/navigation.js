@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMobileMenuActive()) return;
     const clickInsideNav = nav.contains(event.target);
     const clickToggle = mobileMenuToggle && mobileMenuToggle.contains(event.target);
-    if (!clickInsideNav && !clickToggle) {
+    const clickHeader = header && header.contains(event.target);
+    if (!clickInsideNav && !clickToggle && !clickHeader) {
       closeMenu();
     }
   });
