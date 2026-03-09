@@ -1546,15 +1546,14 @@ body > footer.footer {
 }
 
 .quick-question-btn:hover {
-  background-color: var(--color-purple-primary);
+  background-color: transparent;
   border-color: var(--color-purple-dark);
-  color: var(--color-text-white);
-  transform: translateY(-2px);
+  color: var(--color-purple-primary);
   box-shadow: 0 4px 8px rgba(109, 40, 217, 0.3);
 }
 
 .quick-question-btn:active {
-  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(109, 40, 217, 0.2);
 }
 
 .quick-question-btn .material-symbols-outlined {
