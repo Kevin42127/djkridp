@@ -303,5 +303,22 @@
     <script src="js/animations.js"></script>
     <script src="js/ai-chat.js"></script>
     <script src="js/twitch-status.js"></script>
+    <script>
+        // 禁止圖片右鍵功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                
+                img.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
