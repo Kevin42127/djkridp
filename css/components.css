@@ -93,8 +93,8 @@
 }
 
 .nav-link:hover {
-  background-color: var(--color-text-white);
-  color: var(--color-purple-primary);
+  background-color: transparent;
+  color: var(--color-purple-lighter);
   border-radius: 50px;
 }
 

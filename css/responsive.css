@@ -57,13 +57,16 @@
     border-radius: 0;
     color: var(--color-text-primary);
     border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: all var(--transition-base);
   }
   
   .nav-link:hover {
-    background-color: var(--color-purple-primary);
-    color: var(--color-text-white);
-    border-radius: 999px;
+    background-color: transparent;
+    color: var(--color-purple-primary);
+    border-radius: 0;
     text-align: center;
+    text-decoration: none;
   }
   
   .header-right {
