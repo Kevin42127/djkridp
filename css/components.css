@@ -1,6 +1,5 @@
 .header {
   background-color: var(--color-purple-primary);
-  border-bottom: 1px solid var(--color-purple-dark);
   position: fixed;
   top: 0;
   left: 0;
@@ -1257,6 +1256,24 @@ body > footer.footer {
   margin: 0;
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 73px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 215, 0, 0.2);
+  z-index: 1003;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background-color: #FFD700;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
 @media (max-width: 1199.98px) {
   .scroll-up {
     right: 1rem;
@@ -1270,6 +1287,11 @@ body > footer.footer {
 @media (max-width: 768px) {
   .scroll-up._show-scroll {
     bottom: calc(1rem + 56px + 1rem);
+  }
+
+  .scroll-progress {
+    top: 63px;
+    z-index: 1003;
   }
 }
 
