@@ -26,37 +26,89 @@
     
     <!-- Service Worker Registration -->
     <script>
+        console.log('=== PWA Debug Start ===');
+        console.log('Current URL:', window.location.href);
+        console.log('Protocol:', window.location.protocol);
+        console.log('User Agent:', navigator.userAgent);
+        
         if ('serviceWorker' in navigator) {
+            console.log('Service Worker is supported');
+            
             window.addEventListener('load', () => {
+                console.log('Page loaded, registering Service Worker...');
+                
                 navigator.serviceWorker.register('/sw.js', { scope: '/' })
                     .then(registration => {
-                        console.log('SW registered: ', registration);
-                        console.log('SW scope: ', registration.scope);
+                        console.log('✅ SW registered successfully:', registration);
+                        console.log('SW scope:', registration.scope);
+                        console.log('SW active:', registration.active);
+                        console.log('SW installing:', registration.installing);
+                        console.log('SW waiting:', registration.waiting);
                         
                         // 檢查 PWA 安裝條件
                         if ('beforeinstallprompt' in window) {
-                            console.log('Browser supports PWA installation');
+                            console.log('✅ Browser supports PWA installation');
                             
                             // 監聽安裝提示事件
                             window.addEventListener('beforeinstallprompt', (e) => {
-                                console.log('Install prompt detected:', e);
+                                console.log('🎯 Install prompt detected:', e);
                                 e.preventDefault();
                                 window.installPrompt = e;
+                                
+                                // 顯示安裝按鈕（如果需要）
+                                console.log('Install prompt ready, waiting for user interaction');
                             });
+                        } else {
+                            console.log('❌ Browser does not support PWA installation');
                         }
                         
                         // 檢查是否已安裝
                         if (window.matchMedia('(display-mode: standalone)').matches) {
-                            console.log('PWA is already installed');
+                            console.log('✅ PWA is already installed');
+                        } else {
+                            console.log('ℹ️ PWA is not installed yet');
                         }
+                        
+                        // 檢查 Manifest
+                        fetch('/images/site.webmanifest')
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Manifest not found');
+                                }
+                                return response.json();
+                            })
+                            .then(manifest => {
+                                console.log('✅ Manifest loaded:', manifest);
+                                console.log('Icons:', manifest.icons);
+                                
+                                // 檢查圖標是否可訪問
+                                manifest.icons.forEach(icon => {
+                                    fetch(icon.src)
+                                        .then(iconResponse => {
+                                            if (iconResponse.ok) {
+                                                console.log(`✅ Icon accessible: ${icon.src}`);
+                                            } else {
+                                                console.log(`❌ Icon not accessible: ${icon.src}`);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.log(`❌ Icon error: ${icon.src}`, error);
+                                        });
+                                });
+                            })
+                            .catch(error => {
+                                console.error('❌ Manifest error:', error);
+                            });
                     })
                     .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
+                        console.error('❌ SW registration failed:', registrationError);
                     });
             });
         } else {
-            console.log('Service Worker not supported');
+            console.log('❌ Service Worker not supported');
         }
+        
+        console.log('=== PWA Debug End ===');
     </script>
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/global.css">
