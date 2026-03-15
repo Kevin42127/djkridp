@@ -12,16 +12,6 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "images/favicon.ico",
-      "sizes": "16x16 32x32",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "images/favicon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
       "src": "images/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
@@ -33,7 +23,5 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-  "id": "djkridp",
-  "categories": ["music", "entertainment"]
+  ]
 }

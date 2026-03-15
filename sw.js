@@ -15,10 +15,10 @@ const urlsToCache = [
   '/images/favicon.ico',
   '/images/favicon.svg',
   '/images/favicon-96x96.png',
-  '/images/web-app-manifest-192x192.png',
-  '/images/web-app-manifest-512x512.png',
   '/images/apple-touch-icon.png',
   '/images/offline.jpg',
+  '/images/web-app-manifest-192x192.png',
+  '/images/web-app-manifest-512x512.png',
   '/images/site.webmanifest'
 ];
 

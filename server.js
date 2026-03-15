@@ -22,9 +22,13 @@ app.get('/sw.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'sw.js'));
 });
 
-// 圖標支援
-app.get('/images/*', (req, res) => {
-  res.sendFile(path.join(__dirname, req.path));
+// PWA 圖標支援
+app.get('/images/web-app-manifest-192x192.png', (req, res) => {
+  res.sendFile(path.join(__dirname, 'images', 'web-app-manifest-192x192.png'));
+});
+
+app.get('/images/web-app-manifest-512x512.png', (req, res) => {
+  res.sendFile(path.join(__dirname, 'images', 'web-app-manifest-512x512.png'));
 });
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
