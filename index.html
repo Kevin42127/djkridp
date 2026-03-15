@@ -28,9 +28,20 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/sw.js', { scope: '/' })
                     .then(registration => {
                         console.log('SW registered: ', registration);
+                        console.log('SW scope: ', registration.scope);
+                        
+                        // 檢查 PWA 安裝條件
+                        if ('beforeinstallprompt' in window) {
+                            console.log('Browser supports PWA installation');
+                        }
+                        
+                        // 檢查是否已安裝
+                        if (window.matchMedia('(display-mode: standalone)').matches) {
+                            console.log('PWA is already installed');
+                        }
                     })
                     .catch(registrationError => {
                         console.log('SW registration failed: ', registrationError);
