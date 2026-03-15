@@ -26,27 +26,68 @@
     
     <!-- Service Worker Registration -->
     <script>
+        // PWA 安裝檢測和修復
+        function checkPWAInstallation() {
+            console.log('=== PWA Installation Check ===');
+            
+            // 檢查 HTTPS
+            console.log('HTTPS:', location.protocol === 'https:');
+            
+            // 檢查 Service Worker 支援
+            console.log('Service Worker Support:', 'serviceWorker' in navigator);
+            
+            // 檢查 PWA 安裝支援
+            console.log('PWA Install Support:', 'beforeinstallprompt' in window);
+            
+            // 檢查是否已安裝
+            console.log('Already Installed:', window.matchMedia('(display-mode: standalone)').matches);
+            
+            // 檢查 Manifest
+            fetch('/images/site.webmanifest')
+                .then(response => response.json())
+                .then(manifest => {
+                    console.log('Manifest loaded:', manifest);
+                    console.log('Icons:', manifest.icons);
+                })
+                .catch(error => console.error('Manifest error:', error));
+        }
+        
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js', { scope: '/' })
                     .then(registration => {
                         console.log('SW registered: ', registration);
                         console.log('SW scope: ', registration.scope);
+                        console.log('SW active: ', registration.active);
+                        console.log('SW installing: ', registration.installing);
+                        console.log('SW waiting: ', registration.waiting);
                         
                         // 檢查 PWA 安裝條件
                         if ('beforeinstallprompt' in window) {
                             console.log('Browser supports PWA installation');
+                            
+                            // 監聽安裝提示事件
+                            window.addEventListener('beforeinstallprompt', (e) => {
+                                console.log('Install prompt detected:', e);
+                                e.preventDefault();
+                                window.installPrompt = e;
+                            });
                         }
                         
                         // 檢查是否已安裝
                         if (window.matchMedia('(display-mode: standalone)').matches) {
                             console.log('PWA is already installed');
                         }
+                        
+                        // 運行 PWA 檢查
+                        checkPWAInstallation();
                     })
                     .catch(registrationError => {
                         console.log('SW registration failed: ', registrationError);
                     });
             });
+        } else {
+            console.log('Service Worker not supported');
         }
     </script>
     <link rel="stylesheet" href="css/variables.css">
