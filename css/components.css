@@ -1,5 +1,5 @@
 .header {
-  background-color: var(--color-purple-primary);
+  background-color: #4c1d95;
   position: fixed;
   top: 0;
   left: 0;
@@ -214,12 +214,23 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow var(--transition-base);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.card._animate {
-  opacity: 1;
-  transform: translateY(0);
+.card:nth-of-type(1) {
+  animation-delay: 0.3s;
+}
+
+.card:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+
+.card:nth-of-type(3) {
+  animation-delay: 0.7s;
+}
+
+.card:nth-of-type(4) {
+  animation-delay: 0.9s;
 }
 
 .card::before {
@@ -333,20 +344,35 @@
 }
 
 .section-title {
-  font-size: var(--font-size-3xl);
+  font-size: var(--font-size-2xl);
   color: var(--color-purple-primary);
-  margin-bottom: var(--spacing-2xl);
   text-align: center;
+  margin-bottom: var(--spacing-3xl);
   font-weight: 700;
   letter-spacing: -0.02em;
   opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.section-title._animate {
-  opacity: 1;
-  transform: scale(1);
+.section-title:nth-of-type(1) {
+  animation-delay: 0.2s;
+}
+
+.section-title:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+
+.section-title:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+.section-title:nth-of-type(4) {
+  animation-delay: 0.8s;
+}
+
+.section-title:nth-of-type(5) {
+  animation-delay: 1.0s;
 }
 
 .country-list {
@@ -368,21 +394,51 @@
   border-radius: var(--border-radius-lg);
   text-align: center;
   border: 2px solid rgba(139, 92, 246, 0.2);
-  transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+  transition: border-color var(--transition-base), color var(--transition-base);
   box-shadow: 0 4px 8px rgba(17, 24, 39, 0.06);
   opacity: 0;
   transform: translateY(20px) scale(0.98);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, border-color var(--transition-base), box-shadow var(--transition-base);
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.country-item._animate {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+.country-item:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+
+.country-item:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+
+.country-item:nth-of-type(3) {
+  animation-delay: 0.6s;
+}
+
+.country-item:nth-of-type(4) {
+  animation-delay: 0.7s;
+}
+
+.country-item:nth-of-type(5) {
+  animation-delay: 0.8s;
+}
+
+.country-item:nth-of-type(6) {
+  animation-delay: 0.9s;
+}
+
+.country-item:nth-of-type(7) {
+  animation-delay: 1.0s;
+}
+
+.country-item:nth-of-type(8) {
+  animation-delay: 1.1s;
 }
 
 .country-item:hover {
-  transform: translateY(0) scale(1.02);
-  box-shadow: 0 8px 16px rgba(17, 24, 39, 0.12);
+  border-color: var(--color-purple-primary);
+}
+
+.country-item:hover h3 {
+  color: var(--color-purple-primary);
 }
 
 .country-item:focus-within {
@@ -396,6 +452,7 @@
   color: var(--color-purple-darker);
   font-weight: 700;
   font-size: var(--font-size-lg);
+  transition: color var(--transition-base);
 }
 
 
@@ -1059,8 +1116,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-sm);
-  padding: 10px 24px;
-  background-color: var(--color-bg-primary);
+  padding: 0.6rem 1.5rem;
+  background-color: var(--color-text-white);
   border: 2px solid var(--color-purple-primary);
   border-radius: 50px;
   color: var(--color-purple-primary);
@@ -1068,12 +1125,39 @@
   font-size: var(--font-size-base);
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out, background-color var(--transition-base), border-color var(--transition-base), color var(--transition-base), transform 0.2s ease;
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.contact-link._animate {
-  opacity: 1;
-  transform: translateY(0);
+.contact-link:nth-of-type(1) {
+  animation-delay: 0.8s;
+}
+
+.contact-link:nth-of-type(2) {
+  animation-delay: 0.9s;
+}
+
+.contact-link:nth-of-type(3) {
+  animation-delay: 1.0s;
+}
+
+.contact-link:nth-of-type(4) {
+  animation-delay: 1.1s;
+}
+
+.contact-link:nth-of-type(5) {
+  animation-delay: 1.2s;
+}
+
+.contact-link:nth-of-type(6) {
+  animation-delay: 1.3s;
+}
+
+.contact-link:nth-of-type(7) {
+  animation-delay: 1.4s;
+}
+
+.contact-link:nth-of-type(8) {
+  animation-delay: 1.5s;
 }
 
 .contact-link:hover {

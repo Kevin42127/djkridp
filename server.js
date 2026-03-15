@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Groq } = require('groq-sdk');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,6 +9,21 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static('.'));
+
+// Service Worker 支援
+app.get('/sw.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'sw.js'));
+});
+
+// PWA Manifest 支援
+app.get('/manifest.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'images', 'site.webmanifest'));
+});
+
+// 圖標支援
+app.get('/images/*', (req, res) => {
+  res.sendFile(path.join(__dirname, req.path));
+});
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
