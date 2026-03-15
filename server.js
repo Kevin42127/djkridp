@@ -10,14 +10,16 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.'));
 
-// Service Worker 支援
-app.get('/sw.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sw.js'));
-});
-
 // PWA Manifest 支援
 app.get('/manifest.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/manifest+json');
   res.sendFile(path.join(__dirname, 'images', 'site.webmanifest'));
+});
+
+// Service Worker 支援
+app.get('/sw.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.sendFile(path.join(__dirname, 'sw.js'));
 });
 
 // 圖標支援
