@@ -16,6 +16,8 @@ const urlsToCache = [
   '/images/favicon.svg',
   '/images/favicon-96x96.png',
   '/images/apple-touch-icon.png',
+  '/images/phone.png',
+  '/images/pc.png',
   '/images/offline.jpg',
   '/web-app-manifest-192x192.png',
   '/web-app-manifest-512x512.png',

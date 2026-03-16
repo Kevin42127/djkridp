@@ -97,6 +97,25 @@
   border-radius: 50px;
 }
 
+.nav-install {
+  color: var(--color-text-white) !important;
+  font-weight: 500;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 50px;
+  display: block;
+  outline: none !important;
+  position: relative;
+  text-decoration: none;
+  transition: all var(--transition-base);
+}
+
+.nav-install:hover {
+  background-color: transparent;
+  color: var(--color-purple-lighter) !important;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
 .nav-link:focus,
 .nav-link:focus-visible,
 .nav-link:focus-within {
