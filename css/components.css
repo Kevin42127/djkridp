@@ -1834,9 +1834,8 @@ body > footer.footer {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: text-decoration 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.6);
 }
 
 .ai-chat-message.other .ai-chat-link {
@@ -1853,9 +1852,8 @@ body > footer.footer {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: text-decoration 0.2s ease;
+  text-decoration: underline;
+  text-decoration-color: #D97706;
 }
 
 .ai-chat-message ul {
@@ -1935,10 +1933,7 @@ body > footer.footer {
   outline: none !important;
   box-shadow: none !important;
   border: none !important;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  transition: text-decoration 0.2s ease;
+  text-decoration: none;
 }
 
 .ai-chat-message h1,
