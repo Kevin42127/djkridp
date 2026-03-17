@@ -31,21 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isOpen) {
       chatContainer.classList.add('active');
       chatButton.style.display = 'none';
-      // 鎖定背景滾動
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-      document.body.style.top = `-${window.scrollY}px`;
+      
+      // 僅在移動端鎖定背景滾動
+      if (window.innerWidth <= 768) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${window.scrollY}px`;
+      }
     } else {
       chatContainer.classList.remove('active');
       chatButton.style.display = 'flex';
-      // 解除背景滾動鎖定
-      const scrollY = document.body.style.top;
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
-      document.body.style.top = '';
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      
+      // 僅在移動端解除背景滾動鎖定
+      if (window.innerWidth <= 768) {
+        const scrollY = document.body.style.top;
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
   }
 
@@ -101,12 +107,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let formatted = text;
     
+    // 處理換行符
     formatted = formatted.replace(/\r\n/g, '\n');
     formatted = formatted.replace(/\r/g, '\n');
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
+    // 處理程式碼區塊（必須在列表之前處理）
+    formatted = formatCodeBlocks(formatted);
+    
+    // 處理標題
+    formatted = formatHeadings(formatted);
+    
+    // 處理粗體和斜體
+    formatted = formatBoldItalic(formatted);
+    
+    // 處理行內程式碼
+    formatted = formatInlineCode(formatted);
+    
+    // 處理引用
+    formatted = formatBlockquotes(formatted);
+    
+    // 處理列表
     formatted = formatLists(formatted);
     
+    // 處理換行
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
         return '<br>';
@@ -117,6 +141,67 @@ document.addEventListener('DOMContentLoaded', () => {
     formatted = formatted.replace(/\n/g, '<br>');
     
     return formatted;
+  }
+
+  function formatCodeBlocks(text) {
+    // 處理程式碼區塊 ```
+    const codeBlockRegex = /```([\s\S]*?)```/g;
+    return text.replace(codeBlockRegex, (match, code) => {
+      return `<pre><code>${code.trim()}</code></pre>`;
+    });
+  }
+
+  function formatHeadings(text) {
+    // 處理標題 # ## ### 等
+    return text.replace(/^(#{1,6})\s+(.+)$/gm, (match, hashes, content) => {
+      const level = hashes.length;
+      return `<h${level}>${content}</h${level}>`;
+    });
+  }
+
+  function formatBoldItalic(text) {
+    // 處理粗體 **text** 或 __text__
+    let formatted = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    formatted = formatted.replace(/__(.+?)__/g, '<strong>$1</strong>');
+    
+    // 處理斜體 *text* 或 _text_（避免與粗體衝突）
+    formatted = formatted.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+    formatted = formatted.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
+    
+    return formatted;
+  }
+
+  function formatInlineCode(text) {
+    // 處理行內程式碼 `code`
+    return text.replace(/`([^`]+)`/g, '<code>$1</code>');
+  }
+
+  function formatBlockquotes(text) {
+    const lines = text.split('\n');
+    let inBlockquote = false;
+    let result = [];
+    
+    for (let line of lines) {
+      if (line.startsWith('> ')) {
+        if (!inBlockquote) {
+          result.push('<blockquote>');
+          inBlockquote = true;
+        }
+        result.push(`<p>${line.substring(2)}</p>`);
+      } else {
+        if (inBlockquote) {
+          result.push('</blockquote>');
+          inBlockquote = false;
+        }
+        result.push(line);
+      }
+    }
+    
+    if (inBlockquote) {
+      result.push('</blockquote>');
+    }
+    
+    return result.join('\n');
   }
 
   function formatLists(text) {
