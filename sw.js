@@ -1,4 +1,4 @@
-const CACHE_NAME = 'djkridp-v2';
+const CACHE_NAME = 'djkridp-v3';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -58,23 +58,39 @@ self.addEventListener('activate', event => {
   );
 });
 
-// 網路事件 - 網路策略
+// 網路事件 - 網路優先策略
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        // 快取命中 - 返回快取資源
-        if (response) {
+        // 檢查是否是有效回應
+        if (!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
 
-        // 快取未命中 - 網路到網路
-        return fetch(event.request).catch(() => {
-          // 網路失敗 - 返回離線頁面（如果是 HTML 請求）
-          if (event.request.destination === 'document') {
-            return caches.match('/index.html');
-          }
-        });
+        // 克隆回應，因為回應是流
+        const responseToCache = response.clone();
+
+        caches.open(CACHE_NAME)
+          .then(cache => {
+            cache.put(event.request, responseToCache);
+          });
+
+        return response;
+      })
+      .catch(() => {
+        // 網路失敗 - 嘗試快取
+        return caches.match(event.request)
+          .then(cachedResponse => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+            
+            // 如果是 HTML 請求且快取也失敗，返回離線頁面
+            if (event.request.destination === 'document') {
+              return caches.match('/index.html');
+            }
+          });
       })
   );
 });
