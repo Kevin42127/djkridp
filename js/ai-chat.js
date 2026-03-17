@@ -31,9 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isOpen) {
       chatContainer.classList.add('active');
       chatButton.style.display = 'none';
+      // 鎖定背景滾動
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
     } else {
       chatContainer.classList.remove('active');
       chatButton.style.display = 'flex';
+      // 解除背景滾動鎖定
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
   }
 
