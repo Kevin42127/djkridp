@@ -1806,6 +1806,18 @@ body > footer.footer {
   text-underline-offset: 2px;
   transition: opacity var(--transition-base);
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 覆蓋所有瀏覽器原生聚焦效果 */
+.ai-chat-link::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.ai-chat-link:-moz-focusring {
+  outline: none !important;
 }
 
 .ai-chat-message.mine .ai-chat-link {
@@ -1820,6 +1832,8 @@ body > footer.footer {
 .ai-chat-message.mine .ai-chat-link:focus,
 .ai-chat-message.mine .ai-chat-link:focus-visible {
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   transition: text-decoration 0.2s ease;
@@ -1837,6 +1851,8 @@ body > footer.footer {
 .ai-chat-message.other .ai-chat-link:focus,
 .ai-chat-message.other .ai-chat-link:focus-visible {
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   transition: text-decoration 0.2s ease;
@@ -1896,6 +1912,18 @@ body > footer.footer {
   font-weight: 500;
   transition: opacity var(--transition-base);
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 覆蓋所有瀏覽器原生聚焦效果 */
+.ai-platform-link::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.ai-platform-link:-moz-focusring {
+  outline: none !important;
 }
 
 .ai-platform-link:hover {
@@ -1905,6 +1933,8 @@ body > footer.footer {
 .ai-platform-link:focus,
 .ai-platform-link:focus-visible {
   outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
