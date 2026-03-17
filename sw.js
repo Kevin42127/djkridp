@@ -1,4 +1,4 @@
-const CACHE_NAME = 'djkridp-v1';
+const CACHE_NAME = 'djkridp-v2';
 const urlsToCache = [
   '/',
   '/index.html',
