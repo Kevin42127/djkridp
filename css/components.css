@@ -1820,8 +1820,9 @@ body > footer.footer {
 .ai-chat-message.mine .ai-chat-link:focus,
 .ai-chat-message.mine .ai-chat-link:focus-visible {
   outline: none !important;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: text-decoration 0.2s ease;
 }
 
 .ai-chat-message.other .ai-chat-link {
@@ -1836,8 +1837,9 @@ body > footer.footer {
 .ai-chat-message.other .ai-chat-link:focus,
 .ai-chat-message.other .ai-chat-link:focus-visible {
   outline: none !important;
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.3);
-  border-radius: 4px;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: text-decoration 0.2s ease;
 }
 
 .ai-chat-message ul {
@@ -1903,8 +1905,10 @@ body > footer.footer {
 .ai-platform-link:focus,
 .ai-platform-link:focus-visible {
   outline: none !important;
-  box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.3);
-  border-radius: 4px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: text-decoration 0.2s ease;
 }
 
 .ai-chat-message h1,
