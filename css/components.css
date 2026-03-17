@@ -153,6 +153,26 @@
   margin-bottom: 0;
 }
 
+.hero-install-hint {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: var(--spacing-lg) auto 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius-md);
+  border: 1px solid rgba(109, 40, 217, 0.2);
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.08);
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hero-install-hint:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(17, 24, 39, 0.12);
+}
+
 .btn {
   position: relative;
   display: inline-flex;
