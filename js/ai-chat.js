@@ -509,9 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleVirtualScroll(e) {
       if (!virtualScrollEnabled) return;
       
-      if (e) {
-        e.stopPropagation();
-      }
+      // 移除 e.stopPropagation() 允許滾動事件正常傳播
       
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
@@ -524,13 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     chatMessages.addEventListener('scroll', handleVirtualScroll, { passive: true });
     
-    chatMessages.addEventListener('touchmove', (e) => {
-      e.stopPropagation();
-    }, { passive: true });
-    
-    chatMessages.addEventListener('wheel', (e) => {
-      e.stopPropagation();
-    }, { passive: true });
+    // 移除 touchmove 和 wheel 事件的 stopPropagation()
   }
 
   function showConfirmDialog(callback) {
