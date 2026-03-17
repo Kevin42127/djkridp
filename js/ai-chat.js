@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'streamelements.com': { name: 'StreamElements', icon: 'paid' }
     };
 
-    const urlRegex = /\b(https?:\/\/[^\s<>"']+)/g;
+    const urlRegex = /\b(https?:\/\/[^\s<>"']+\b)/g;
     return text.replace(urlRegex, (match) => {
       let url = match;
       const trailingPunctuation = /[.,!?;:]+$/;
@@ -292,6 +292,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const [domain, info] of Object.entries(platforms)) {
           if (url.includes(domain)) {
+            // 特殊處理 Instagram 連結，確保正確格式
+            if (domain === 'instagram.com') {
+              const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link">${info.name}</a>`;
+              return hasTrailingPunct ? link + match.slice(url.length) : link;
+            }
             const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link">${info.name}</a>`;
             return hasTrailingPunct ? link + match.slice(url.length) : link;
           }
