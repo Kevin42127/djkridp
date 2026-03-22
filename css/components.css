@@ -25,9 +25,11 @@
 }
 
 .header-right {
-  display: flex;
+  display: flex !important;
   align-items: center;
   gap: var(--spacing-lg);
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .logo {
@@ -240,6 +242,80 @@
 .btn-secondary:focus-visible {
   outline: 2px solid var(--color-purple-primary);
   outline-offset: 4px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.2s forwards;
+}
+
+.scroll-indicator-dot {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--color-purple-primary);
+  border-radius: 25px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.scroll-indicator-dot::before {
+  content: "";
+  width: 4px;
+  height: 8px;
+  background-color: var(--color-purple-primary);
+  border-radius: 50%;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 20% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(12px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator:hover .scroll-indicator-dot {
+  border-color: var(--color-purple-dark);
+}
+
+.scroll-indicator:hover .scroll-indicator-dot::before {
+  background-color: var(--color-purple-dark);
+}
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 20px;
+  }
+  
+  .scroll-indicator-dot {
+    width: 24px;
+    height: 40px;
+    padding: 6px 0;
+  }
+  
+  .scroll-indicator-dot::before {
+    width: 3px;
+    height: 6px;
+  }
 }
 
 .card {
@@ -1205,7 +1281,258 @@
   color: var(--color-text-white);
 }
 
-/* 平台品牌色 */
+/* 分享按鈕 */
+.share-button {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: var(--color-text-white);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-right: var(--spacing-sm);
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.share-button:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.share-button:active {
+  transform: scale(1);
+}
+
+.share-button .material-symbols-outlined {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* 分享選單 */
+.share-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+}
+
+.share-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.share-menu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: none;
+  z-index: 999;
+}
+
+.share-menu-content {
+  position: relative;
+  background-color: var(--color-text-white);
+  border-radius: 1rem;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.2);
+  transform: scale(0.9) translateY(20px);
+  transition: all var(--transition-base);
+  z-index: 9999;
+}
+
+.share-menu.active .share-menu-content {
+  transform: scale(1) translateY(0);
+}
+
+.share-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid rgba(109, 40, 217, 0.1);
+}
+
+.share-menu-header h3 {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-purple-primary);
+}
+
+.share-menu-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.share-menu-close:hover {
+  background-color: rgba(109, 40, 217, 0.1);
+  color: var(--color-purple-primary);
+}
+
+.share-menu-close .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.share-menu-body {
+  padding: var(--spacing-lg) var(--spacing-xl);
+}
+
+.share-url-container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: rgba(109, 40, 217, 0.05);
+  border: 2px solid rgba(109, 40, 217, 0.2);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  transition: all var(--transition-base);
+}
+
+.share-url-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.share-url-input::selection {
+  background-color: rgba(109, 40, 217, 0.2);
+}
+
+.share-copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-purple-primary);
+  color: var(--color-text-white);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.share-copy-btn:active {
+  transform: translateY(0);
+}
+
+.share-copy-btn .material-symbols-outlined {
+  font-size: 18px;
+  margin-right: var(--spacing-xs);
+}
+
+.share-copy-btn.copied {
+  background-color: #25D366;
+}
+
+.share-url-container:hover {
+  border-color: var(--color-purple-primary);
+  background-color: rgba(109, 40, 217, 0.1);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .share-button {
+    width: 36px;
+    height: 36px;
+    margin-right: var(--spacing-xs);
+  }
+  
+  .share-button .material-symbols-outlined {
+    font-size: 18px;
+  }
+  
+  .share-menu-content {
+    width: 95%;
+    margin: var(--spacing-md);
+  }
+  
+  .share-menu-header {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .share-menu-header h3 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .share-menu-body {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .share-url-container {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  
+  .share-url-input {
+    width: 100%;
+    text-align: center;
+    font-size: var(--font-size-xs);
+  }
+  
+  .share-copy-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* 複製成功提示 */
+.share-copy-feedback {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-purple-primary);
+  color: var(--color-text-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-base);
+}
+
+.share-copy-feedback.show {
+  opacity: 1;
+  visibility: visible;
+}
 .contact-link[data-platform="twitch"]:hover {
   background-color: #9146FF;
   border-color: #9146FF;
@@ -1385,7 +1712,7 @@ body > footer.footer {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: rgba(255, 215, 0, 0.2);
+  background-color: transparent;
   z-index: 1003;
   pointer-events: none;
 }

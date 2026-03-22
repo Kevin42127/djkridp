@@ -230,8 +230,11 @@
     display: none !important;
   }
   
+  /* 確保分享按鈕在小螢幕上仍然顯示 */
   .header-right {
-    display: none !important;
+    display: flex !important;
+    align-items: center;
+    gap: var(--spacing-xs);
   }
 
   .contact-links {

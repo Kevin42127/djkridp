@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   const headerHeight = header ? header.offsetHeight : 0;
   const navOverlay = document.querySelector('.nav-overlay');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
 
   function smoothScrollTo(targetId) {
     const targetElement = document.querySelector(targetId);
@@ -17,6 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: 'smooth'
       });
     }
+  }
+
+  function getNextSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const currentScroll = window.pageYOffset + headerHeight + 100;
+    
+    for (let i = 0; i < sections.length; i++) {
+      const section = sections[i];
+      const sectionTop = section.offsetTop;
+      
+      if (sectionTop > currentScroll) {
+        return section;
+      }
+    }
+    return null;
   }
 
   function throttle(func, wait) {
@@ -168,6 +184,53 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       smoothScrollTo(hash);
     }, 100);
+  }
+
+  // 滾動指示器功能
+  if (scrollIndicator) {
+    // 點擊滾動到下一個 section
+    scrollIndicator.addEventListener('click', () => {
+      const nextSection = getNextSection();
+      if (nextSection) {
+        smoothScrollTo(`#${nextSection.id}`);
+      }
+    });
+
+    // 滾動時隱藏指示器
+    function handleScrollIndicatorVisibility() {
+      const scrollPosition = window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      
+      // 當滾動超過第一個視窗高度時隱藏指示器
+      if (scrollPosition > windowHeight * 0.5) {
+        scrollIndicator.style.opacity = '0';
+        scrollIndicator.style.pointerEvents = 'none';
+      } else {
+        scrollIndicator.style.opacity = '1';
+        scrollIndicator.style.pointerEvents = 'auto';
+      }
+
+      // 檢查是否到達最後一個 section
+      const sections = document.querySelectorAll('section[id]');
+      if (sections.length > 0) {
+        const lastSection = sections[sections.length - 1];
+        const lastSectionTop = lastSection.offsetTop;
+        const scrollBottom = scrollPosition + windowHeight;
+        
+        // 接近最後一個 section 時隱藏指示器
+        if (scrollBottom >= lastSectionTop - 200) {
+          scrollIndicator.style.opacity = '0';
+          scrollIndicator.style.pointerEvents = 'none';
+        }
+      }
+    }
+
+    // 節流處理滾動事件
+    const throttledHandleScrollIndicator = throttle(handleScrollIndicatorVisibility, 100);
+    window.addEventListener('scroll', throttledHandleScrollIndicator, { passive: true });
+    
+    // 初始化檢查
+    handleScrollIndicatorVisibility();
   }
 
 });
