@@ -582,9 +582,6 @@
   max-width: 1000px;
   margin: var(--spacing-3xl) auto 0;
   padding: var(--spacing-xl);
-  background: var(--color-bg-secondary);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
 }
 
 .spotify-embed-container h2 {
