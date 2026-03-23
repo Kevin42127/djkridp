@@ -111,10 +111,23 @@
   
   #home {
     padding-top: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
   }
 
-  .section {
+  #contact.section {
+    padding: var(--spacing-xl) 0;
+    padding-bottom: var(--spacing-xl);
+    min-height: auto;
+    display: block;
+  }
+  
+  #contact.section {
     padding: var(--spacing-2xl) 0;
+    padding-bottom: var(--spacing-2xl);
+    min-height: auto;
+    display: block;
   }
   
   h1 {

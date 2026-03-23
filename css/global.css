@@ -29,7 +29,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-color: var(--color-bg-secondary);
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #8b5cf6 100%);
   position: relative;
   padding-top: 90px;
 }
@@ -131,10 +131,69 @@ button {
 .section {
   padding: var(--spacing-3xl) 0;
   scroll-margin-top: 90px;
+  width: 100%;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
 #contact.section {
   padding-bottom: var(--spacing-3xl);
+}
+
+/* 全寬背景區塊 */
+#about {
+  background-color: var(--color-bg-secondary);
+}
+
+#about .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+#tours {
+  background-color: var(--color-bg-tours);
+}
+
+#tours .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+#works {
+  background-color: var(--color-bg-works);
+}
+
+#works .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+#contact {
+  background-color: var(--color-bg-contact);
+  min-height: auto;
+  display: block;
+}
+
+#contact.section {
+  padding: var(--spacing-3xl) 0;
+  padding-bottom: var(--spacing-3xl);
+  min-height: auto;
+  display: block;
+}
+
+#contact .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
 }
 
 .text-center {
