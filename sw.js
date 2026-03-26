@@ -1,4 +1,4 @@
-const CACHE_NAME = 'djkridp-v3';
+const CACHE_NAME = 'djkridp-v4'; // 更新版本號強制清除舊快取
 const urlsToCache = [
   '/',
   '/index.html',
@@ -58,19 +58,80 @@ self.addEventListener('activate', event => {
   );
 });
 
-// 網路事件 - 網路優先策略
+// 網路事件 - 智能快取策略
 self.addEventListener('fetch', event => {
+  // 對於 HTML 檔案，使用網路優先確保最新版本
+  if (event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          // 網路成功，更新快取
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+          return response;
+        })
+        .catch(() => {
+          // 網路失敗，使用快取
+          return caches.match(event.request);
+        })
+    );
+    return;
+  }
+
+  // 對於 CSS/JS 檔案，使用快取優先但檢查更新
+  if (event.request.url.includes('/css/') || event.request.url.includes('/js/')) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(cachedResponse => {
+          // 先嘗試網路檢查是否有更新
+          const fetchPromise = fetch(event.request)
+            .then(networkResponse => {
+              // 網路成功，更新快取
+              caches.open(CACHE_NAME)
+                .then(cache => {
+                  cache.put(event.request, networkResponse.clone());
+                });
+              return networkResponse;
+            })
+            .catch(() => {
+              // 網路失敗，使用快取
+              return cachedResponse;
+            });
+
+          // 如果有快取，先返回快取，背景更新
+          if (cachedResponse) {
+            // 背景檢查更新
+            fetch(event.request)
+              .then(networkResponse => {
+                if (networkResponse.ok) {
+                  caches.open(CACHE_NAME)
+                    .then(cache => {
+                      cache.put(event.request, networkResponse);
+                    });
+                }
+              });
+            return cachedResponse;
+          }
+
+          // 沒有快取，等待網路
+          return fetchPromise;
+        })
+    );
+    return;
+  }
+
+  // 其他資源使用原來的網路優先策略
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        // 檢查是否是有效回應
         if (!response || response.status !== 200 || response.type !== 'basic') {
           return response;
         }
 
-        // 克隆回應，因為回應是流
         const responseToCache = response.clone();
-
         caches.open(CACHE_NAME)
           .then(cache => {
             cache.put(event.request, responseToCache);
@@ -79,14 +140,12 @@ self.addEventListener('fetch', event => {
         return response;
       })
       .catch(() => {
-        // 網路失敗 - 嘗試快取
         return caches.match(event.request)
           .then(cachedResponse => {
             if (cachedResponse) {
               return cachedResponse;
             }
             
-            // 如果是 HTML 請求且快取也失敗，返回離線頁面
             if (event.request.destination === 'document') {
               return caches.match('/index.html');
             }
