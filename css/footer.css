@@ -1,0 +1,37 @@
+/* Footer E-Mail Link Styles */
+.footer-email {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.footer-email-label {
+  color: var(--color-text-white);
+  font-size: var(--font-size-sm);
+}
+
+.footer-email-link {
+  color: var(--color-text-white);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
+  padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 0;
+  border-radius: var(--border-radius-sm);
+}
+
+.footer-email-link:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+.footer-email-link:focus {
+  outline: 2px solid var(--color-purple-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-email-label,
+  .footer-email-link {
+    font-size: var(--font-size-xs);
+  }
+}
