@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chatContainer.classList.add('active');
       chatButton.style.display = 'none';
       
-      // 僅在移動端鎖定背景滾動
+      // Hintergrund-Scrolling nur auf mobilen Geräten sperren
       if (window.innerWidth <= 768) {
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
       chatContainer.classList.remove('active');
       chatButton.style.display = 'flex';
       
-      // 僅在移動端解除背景滾動鎖定
+      // Hintergrund-Scrolling-Sperre nur auf mobilen Geräten aufheben
       if (window.innerWidth <= 768) {
         const scrollY = document.body.style.top;
         document.body.style.overflow = '';
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // 更新刪除按鈕狀態
+    // Löschen-Button-Status aktualisieren
     if (chatClear) {
       chatClear.disabled = !hasMessages;
       chatClear.style.opacity = hasMessages ? '1' : '0.5';
@@ -107,30 +107,30 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let formatted = text;
     
-    // 處理換行符
+    // Zeilenumbrüche verarbeiten
     formatted = formatted.replace(/\r\n/g, '\n');
     formatted = formatted.replace(/\r/g, '\n');
     formatted = formatted.replace(/\n{3,}/g, '\n\n');
     
-    // 處理程式碼區塊（必須在列表之前處理）
+    // Code-Blöcke verarbeiten (muss vor Listen verarbeitet werden)
     formatted = formatCodeBlocks(formatted);
     
-    // 處理標題
+    // Überschriften verarbeiten
     formatted = formatHeadings(formatted);
     
-    // 處理粗體和斜體
+    // Fett- und Kursiv-Text verarbeiten
     formatted = formatBoldItalic(formatted);
     
-    // 處理行內程式碼
+    // Inline-Code verarbeiten
     formatted = formatInlineCode(formatted);
     
-    // 處理引用
+    // Blockquotes verarbeiten
     formatted = formatBlockquotes(formatted);
     
-    // 處理列表
+    // Listen verarbeiten
     formatted = formatLists(formatted);
     
-    // 處理換行
+    // Zeilenumbrüche verarbeiten
     formatted = formatted.split('\n').map(line => {
       if (line.trim() === '') {
         return '<br>';
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatCodeBlocks(text) {
-    // 處理程式碼區塊 ```
+    // Code-Blöcke ``` verarbeiten
     const codeBlockRegex = /```([\s\S]*?)```/g;
     return text.replace(codeBlockRegex, (match, code) => {
       return `<pre><code>${code.trim()}</code></pre>`;
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatHeadings(text) {
-    // 處理標題 # ## ### 等
+    // Überschriften # ## ### etc. verarbeiten
     return text.replace(/^(#{1,6})\s+(.+)$/gm, (match, hashes, content) => {
       const level = hashes.length;
       return `<h${level}>${content}</h${level}>`;
@@ -160,11 +160,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatBoldItalic(text) {
-    // 處理粗體 **text** 或 __text__
+    // Fett-Text **text** oder __text__ verarbeiten
     let formatted = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     formatted = formatted.replace(/__(.+?)__/g, '<strong>$1</strong>');
     
-    // 處理斜體 *text* 或 _text_（避免與粗體衝突）
+    // Kursiv-Text *text* oder _text_ verarbeiten (Konflikte mit Fett vermeiden)
     formatted = formatted.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
     formatted = formatted.replace(/(?<!_)_(?!_)(.+?)(?<!_)_(?!_)/g, '<em>$1</em>');
     
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatInlineCode(text) {
-    // 處理行內程式碼 `code`
+    // Inline-Code `code` verarbeiten
     return text.replace(/`([^`]+)`/g, '<code>$1</code>');
   }
 
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const [domain, info] of Object.entries(platforms)) {
           if (url.includes(domain)) {
-            // 特殊處理 Instagram 連結，確保正確格式
+            // Spezielle Behandlung für Instagram-Links, korrektes Format sicherstellen
             if (domain === 'instagram.com') {
               const link = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="ai-platform-link">${info.name}</a>`;
               return hasTrailingPunct ? link + match.slice(url.length) : link;
@@ -611,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleVirtualScroll(e) {
       if (!virtualScrollEnabled) return;
       
-      // 移除 e.stopPropagation() 允許滾動事件正常傳播
+      // e.stopPropagation() entfernen um normale Scroll-Ereignis-Propagation zu erlauben
       
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
@@ -624,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     chatMessages.addEventListener('scroll', handleVirtualScroll, { passive: true });
     
-    // 移除 touchmove 和 wheel 事件的 stopPropagation()
+    // stopPropagation() für touchmove und wheel-Ereignisse entfernen
   }
 
   function showConfirmDialog(callback) {

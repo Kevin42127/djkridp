@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return nav && nav.classList.contains('active') && window.innerWidth <= 768;
   }
 
-  // 處理 logo 點擊
+  // Logo-Klick behandeln
   if (logo) {
     logo.addEventListener('click', () => {
       const target = logo.getAttribute('data-target');
@@ -179,16 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const hash = window.location.hash;
-  if (hash) {
-    setTimeout(() => {
-      smoothScrollTo(hash);
-    }, 100);
-  }
+  // Hash-basiertes Scrollen nur für manuelle Navigation, nicht für Reload
+  // Browser-Standardverhalten für Scroll-Restoration beibehalten
 
-  // 滾動指示器功能
+  // Scroll-Indikator-Funktion
   if (scrollIndicator) {
-    // 點擊滾動到下一個 section
+    // Klick zum Scrollen zur nächsten Section
     scrollIndicator.addEventListener('click', () => {
       const nextSection = getNextSection();
       if (nextSection) {
@@ -196,12 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // 滾動時隱藏指示器
+    // Indikator beim Scrollen ausblenden
     function handleScrollIndicatorVisibility() {
       const scrollPosition = window.pageYOffset;
       const windowHeight = window.innerHeight;
       
-      // 當滾動超過第一個視窗高度時隱藏指示器
+      // Indikator ausblenden wenn über erste Fensterhöhe gescrollt
       if (scrollPosition > windowHeight * 0.5) {
         scrollIndicator.style.opacity = '0';
         scrollIndicator.style.pointerEvents = 'none';
@@ -210,14 +206,14 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollIndicator.style.pointerEvents = 'auto';
       }
 
-      // 檢查是否到達最後一個 section
+      // Prüfen ob letzte Section erreicht
       const sections = document.querySelectorAll('section[id]');
       if (sections.length > 0) {
         const lastSection = sections[sections.length - 1];
         const lastSectionTop = lastSection.offsetTop;
         const scrollBottom = scrollPosition + windowHeight;
         
-        // 接近最後一個 section 時隱藏指示器
+        // Indikator ausblenden wenn nahe der letzten Section
         if (scrollBottom >= lastSectionTop - 200) {
           scrollIndicator.style.opacity = '0';
           scrollIndicator.style.pointerEvents = 'none';
@@ -225,12 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 節流處理滾動事件
+    // Scroll-Ereignisse drosseln
     const throttledHandleScrollIndicator = throttle(handleScrollIndicatorVisibility, 100);
     window.addEventListener('scroll', throttledHandleScrollIndicator, { passive: true });
     
-    // 初始化檢查
-    handleScrollIndicatorVisibility();
+    // Initialisierungsprüfung verzögern um Browser-Scroll-Restoration nicht zu stören
+    setTimeout(() => {
+      handleScrollIndicatorVisibility();
+    }, 500);
   }
 
 });

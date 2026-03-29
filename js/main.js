@@ -8,11 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
       element.style.opacity = '1';
     });
 
-    if ('scrollBehavior' in document.documentElement.style === false) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js';
-      document.head.appendChild(script);
-    }
+    // Smooth scroll polyfill nur bei Bedarf laden, nicht sofort
+    // if ('scrollBehavior' in document.documentElement.style === false) {
+    //   const script = document.createElement('script');
+    //   script.src = 'https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js';
+    //   document.head.appendChild(script);
+    // }
   } catch (error) {
     console.error('Error in main.js:', error);
   }

@@ -618,7 +618,7 @@
   color: #9146FF;
   text-decoration: underline;
   transition: all 0.3s ease;
-  outline: none !important; /* 強制移除所有焦點外框 */
+  outline: none !important; /* Alle Fokus-Rahmen erzwingen entfernen */
 }
 
 .twitch-link:hover {
@@ -627,21 +627,21 @@
 }
 
 .twitch-link:focus {
-  outline: none !important; /* 強制移除焦點外框 */
-  box-shadow: none !important; /* 移除任何陰影效果 */
+  outline: none !important; /* Fokus-Rahmen entfernen */
+  box-shadow: none !important; /* Alle Schatteneffekte entfernen */
 }
 
 .twitch-link:focus-visible {
-  outline: none !important; /* 強制移除可見焦點外框 */
-  box-shadow: none !important; /* 移除任何陰影效果 */
+  outline: none !important; /* Sichtbaren Fokus-Rahmen entfernen */
+  box-shadow: none !important; /* Alle Schatteneffekte entfernen */
 }
 
 .twitch-link:focus:not(:focus-visible) {
-  outline: none !important; /* 強制移除非鍵盤焦點外框 */
-  box-shadow: none !important; /* 移除任何陰影效果 */
+  outline: none !important; /* Nicht-Tastatur-Fokus-Rahmen entfernen */
+  box-shadow: none !important; /* Alle Schatteneffekte entfernen */
 }
 
-/* 移除所有可能的聚焦效果 */
+/* Alle möglichen Fokuseffekte entfernen */
 .twitch-link::-moz-focus-inner {
   border: 0;
 }
@@ -686,7 +686,7 @@
 }
 
 .twitch-preview-info {
-  display: none; /* 隱藏空的 info 區域 */
+  display: none; /* Leeren info-Bereich ausblenden */
 }
 
 .twitch-preview-info h3 {
@@ -1250,7 +1250,7 @@
   box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
 }
 
-/* 動畫延遲 */
+/* Animationsverzögerungen */
 .contact-link:nth-child(1) { animation-delay: 0.1s; }
 .contact-link:nth-child(2) { animation-delay: 0.2s; }
 .contact-link:nth-child(3) { animation-delay: 0.3s; }
@@ -1298,7 +1298,7 @@
   color: var(--color-text-white);
 }
 
-/* 分享按鈕 */
+/* Teilen-Button */
 .share-button {
   display: flex !important;
   align-items: center;
@@ -1328,7 +1328,7 @@
   font-weight: 500;
 }
 
-/* 分享選單 */
+/* Teilen-Menü */
 .share-menu {
   position: fixed;
   top: 0;
@@ -1482,7 +1482,7 @@
   background-color: rgba(109, 40, 217, 0.1);
 }
 
-/* 響應式設計 */
+/* Responsive Design */
 @media (max-width: 768px) {
   .share-button {
     width: 36px;
@@ -1529,7 +1529,7 @@
   }
 }
 
-/* 複製成功提示 */
+/* Kopier-Erfolgs-Feedback */
 .share-copy-feedback {
   position: fixed;
   top: 50%;
@@ -1609,7 +1609,7 @@
   border-radius: var(--border-radius-sm);
   cursor: pointer;
   transition: all var(--transition-base);
-  z-index: 1001; /* 回到正常層級 */
+  z-index: 1001; /* Zurück zur normalen Ebene */
   position: relative;
 }
 
@@ -1764,7 +1764,7 @@ body > footer.footer {
 
 .nav-overlay {
   position: fixed;
-  top: 80px; /* 從 header 下方開始，假設 header 高度約 80px */
+  top: 80px; /* Beginnt unter dem Header, angenommen Header-Höhe ca. 80px */
   left: 0;
   right: 0;
   bottom: 0;
@@ -1774,7 +1774,7 @@ body > footer.footer {
   pointer-events: none;
   transition: opacity 0.3s ease-in-out, 
               visibility 0.3s ease-in-out;
-  z-index: 998; /* 回到原始層級 */
+  z-index: 998; /* Zurück zur ursprünglichen Ebene */
 }
 
 .nav-overlay.active {
@@ -2154,7 +2154,7 @@ body > footer.footer {
   border: none !important;
 }
 
-/* 覆蓋所有瀏覽器原生聚焦效果 */
+/* Alle nativen Browser-Fokuseffekte überschreiben */
 .ai-chat-link::-moz-focus-inner {
   border: 0;
   padding: 0;
@@ -2258,7 +2258,7 @@ body > footer.footer {
   border: none !important;
 }
 
-/* 覆蓋所有瀏覽器原生聚焦效果 */
+/* Alle nativen Browser-Fokuseffekte überschreiben */
 .ai-platform-link::-moz-focus-inner {
   border: 0;
   padding: 0;

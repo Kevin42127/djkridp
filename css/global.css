@@ -6,7 +6,7 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */ /* Kann Browser-Scroll-Restoration stören */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -142,7 +142,7 @@ button {
   padding-bottom: var(--spacing-3xl);
 }
 
-/* 全寬背景區塊 */
+/* Vollbreiten-Hintergrundbereich */
 #about {
   background-color: var(--color-bg-secondary);
 }

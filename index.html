@@ -14,7 +14,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="manifest" href="images/site.webmanifest">
     
-    <!-- PWA Meta Tags -->
+    <!-- PWA Meta-Tags -->
     <meta name="theme-color" content="#4c1d95">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -24,14 +24,14 @@
     <meta name="msapplication-config" content="none">
     <meta name="mobile-web-app-capable" content="yes">
     
-    <!-- Service Worker Registration -->
+    <!-- Service Worker Registrierung -->
     <script>
         console.log('=== PWA Debug Start ===');
         console.log('Current URL:', window.location.href);
         console.log('Protocol:', window.location.protocol);
         console.log('User Agent:', navigator.userAgent);
         
-        // 版本檢查和更新機制
+        // Versionsprüfung und Update-Mechanismus
         const APP_VERSION = '1.2.0';
         const VERSION_KEY = 'djkridp_version';
         
@@ -41,7 +41,7 @@
                 console.log('🔄 New version detected:', APP_VERSION);
                 localStorage.setItem(VERSION_KEY, APP_VERSION);
                 
-                // 清除舊快取
+                // Alte Cache löschen
                 if ('caches' in window) {
                     caches.keys().then(cacheNames => {
                         return Promise.all(
@@ -72,31 +72,31 @@
                         console.log('SW installing:', registration.installing);
                         console.log('SW waiting:', registration.waiting);
                         
-                        // 檢查 PWA 安裝條件
+                        // PWA-Installationsbedingungen prüfen
                         if ('beforeinstallprompt' in window) {
                             console.log('✅ Browser supports PWA installation');
                             
-                            // 監聽安裝提示事件
+                            // Installationsprompt-Ereignis überwachen
                             window.addEventListener('beforeinstallprompt', (e) => {
                                 console.log('🎯 Install prompt detected:', e);
                                 e.preventDefault();
                                 window.installPrompt = e;
                                 
-                                // 顯示安裝按鈕（如果需要）
+                                // Installationsbutton anzeigen (falls erforderlich)
                                 console.log('Install prompt ready, waiting for user interaction');
                             });
                         } else {
                             console.log('❌ Browser does not support PWA installation');
                         }
                         
-                        // 檢查是否已安裝
+                        // Prüfen, ob bereits installiert
                         if (window.matchMedia('(display-mode: standalone)').matches) {
                             console.log('✅ PWA is already installed');
                         } else {
                             console.log('ℹ️ PWA is not installed yet');
                         }
                         
-                        // 檢查 Manifest
+                        // Manifest prüfen
                         fetch('/images/site.webmanifest')
                             .then(response => {
                                 if (!response.ok) {
@@ -108,7 +108,7 @@
                                 console.log('✅ Manifest loaded:', manifest);
                                 console.log('Icons:', manifest.icons);
                                 
-                                // 檢查圖標是否可訪問
+                                // Prüfen, ob Icons zugänglich sind
                                 manifest.icons.forEach(icon => {
                                     fetch(icon.src)
                                         .then(iconResponse => {
@@ -176,7 +176,7 @@
             </div>
         </section>
 
-        <!-- 滾動指示器 -->
+        <!-- Scroll-Indikator -->
         <div class="scroll-indicator" aria-label="向下滾動">
             <div class="scroll-indicator-dot"></div>
         </div>
@@ -282,7 +282,7 @@
                 <div class="twitch-live-container">
                     <h2>Live Streaming auf <a href="https://www.twitch.tv/djkridp" target="_blank" rel="noopener noreferrer" class="twitch-link">Twitch</a></h2>
                     
-                    <!-- 離線時顯示預覽 -->
+                    <!-- Offline-Vorschau anzeigen -->
                     <div id="twitch-offline-view" class="twitch-offline-view">
                         <div class="twitch-preview-card">
                             <img src="images/offline.jpg" 
@@ -293,7 +293,7 @@
                         </div>
                     </div>
 
-                    <!-- 直播時顯示播放器 -->
+                    <!-- Live-Player anzeigen -->
                     <div id="twitch-live-view" class="twitch-official-embed" style="display: none;">
                         <div class="twitch-player-wrapper">
                             <iframe 
@@ -348,16 +348,6 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="https://www.twitch.tv/djkridp" class="social-link" target="_blank" rel="noopener noreferrer">Twitch</a>
-                <a href="https://www.instagram.com/dj_krid_p" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
-                <a href="https://www.tiktok.com/@krid_p" class="social-link" target="_blank" rel="noopener noreferrer">TikTok</a>
-                <a href="https://www.facebook.com/djkridp/" class="social-link" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <a href="https://www.whatsapp.com/channel/0029Vb6FeSm9hXF7H6qEIk3k" class="social-link" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                <a href="https://discord.gg/3xmER2Gc3B" class="social-link" target="_blank" rel="noopener noreferrer">Discord</a>
-                <a href="https://open.spotify.com/user/eluw6nthyi6sd3wjcydx6rojx?nd=1&amp;dlsi=2defb229291d40e7" class="social-link" target="_blank" rel="noopener noreferrer">Spotify</a>
-                <a href="https://streamelements.com/djkridp/tip" class="social-link" target="_blank" rel="noopener noreferrer">Donate</a>
-            </div>
             <div class="copyright">
                 <span>©</span>
                 <span>DJKridP</span>
@@ -443,7 +433,7 @@
     <script src="js/ai-chat.js?v=1.2.0"></script>
     <script src="js/twitch-status.js?v=1.2.0"></script>
     <script>
-        // 禁止圖片右鍵功能
+        // Rechtsklick-Funktion für Bilder deaktivieren
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('img');
             images.forEach(img => {

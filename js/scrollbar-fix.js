@@ -1,10 +1,10 @@
-// 強制隱藏滾動條軌道但保留手柄
+// Scrollbar-Track ausblenden aber Griff beibehalten
 document.addEventListener('DOMContentLoaded', () => {
-  // 創建強制隱藏軌道但保留手柄的樣式
+  // Stile erstellen zum Ausblenden des Tracks aber Beibehalten des Griffs
   const forceHideTrackKeepThumbStyles = () => {
     const style = document.createElement('style');
     style.textContent = `
-      /* 強制隱藏軌道但保留手柄 - 最高優先級 */
+      /* Track ausblenden aber Griff beibehalten - höchste Priorität */
       ::-webkit-scrollbar {
         width: 8px !important;
         height: 8px !important;
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         border: none !important;
       }
       
-      /* 保留滾動條手柄 - 強制可見 */
+      /* Scrollbar-Griff beibehalten - erzwingen Sichtbarkeit */
       ::-webkit-scrollbar-thumb {
         background: var(--color-purple-primary) !important;
         border-radius: 4px !important;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         background: var(--color-purple-darker) !important;
       }
       
-      /* 所有 Webkit 元素 - 強制隱藏軌道 */
+      /* Alle Webkit-Elemente - Track ausblenden erzwingen */
       *::-webkit-scrollbar-track {
         background: transparent !important;
         border: none !important;
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
         visibility: hidden !important;
       }
       
-      /* Firefox - 隱藏軌道但保留手柄 */
+      /* Firefox - Track ausblenden aber Griff beibehalten */
       html {
         scrollbar-width: thin !important;
         scrollbar-color: var(--color-purple-primary) transparent !important;
       }
       
-      /* 針對特定元素的強制隱藏 */
+      /* Erzwungenes Ausblenden für spezifische Elemente */
       body::-webkit-scrollbar-track {
         background: transparent !important;
         border: none !important;
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         visibility: hidden !important;
       }
       
-      /* 確保滾動功能正常 */
+      /* Sicherstellen, dass Scroll-Funktion normal funktioniert */
       body {
         overflow-y: auto !important;
         overflow-x: hidden !important;
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overflow-x: hidden !important;
       }
       
-      /* 響應式調整 */
+      /* Responsive Anpassungen */
       @media (max-width: 768px) {
         ::-webkit-scrollbar {
           width: 4px !important;
@@ -183,20 +183,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     `;
     
-    // 添加到 head 的最前面，確保最高優先級
+    // Am Anfang von head einfügen für höchste Priorität
     document.head.insertBefore(style, document.head.firstChild);
   };
 
-  // 立即執行
+  // Sofort ausführen
   forceHideTrackKeepThumbStyles();
 
-  // 多次延遲執行，確保覆蓋所有其他樣式
+  // Mehrfach verzögert ausführen um sicherzustellen, dass alle anderen Stile überschrieben werden
   setTimeout(forceHideTrackKeepThumbStyles, 50);
   setTimeout(forceHideTrackKeepThumbStyles, 100);
   setTimeout(forceHideTrackKeepThumbStyles, 200);
   setTimeout(forceHideTrackKeepThumbStyles, 500);
   
-  // 監聽 DOM 變化
+  // DOM-Änderungen überwachen
   const observer = new MutationObserver(() => {
     forceHideTrackKeepThumbStyles();
   });
@@ -206,22 +206,22 @@ document.addEventListener('DOMContentLoaded', () => {
     subtree: true
   });
 
-  // 監聽滾動事件確保功能正常
+  // Scroll-Ereignisse überwachen um sicherzustellen, dass Funktion normal funktioniert
   let isScrolling = false;
   window.addEventListener('scroll', () => {
     if (!isScrolling) {
       isScrolling = true;
-      // 滾動功能正常
+      // Scroll-Funktion funktioniert normal
       setTimeout(() => {
         isScrolling = false;
       }, 100);
     }
   });
 
-  // 定期檢查並重新應用樣式
+  // Regelmäßig prüfen und Stile neu anwenden
   setInterval(() => {
     forceHideTrackKeepThumbStyles();
   }, 1000);
 
-  console.log('強制滾動條軌道隱藏腳本已載入，手柄保留');
+  console.log('Skript zum Ausblenden von Scrollbar-Tracks geladen, Griff beibehalten');
 });

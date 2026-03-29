@@ -1,6 +1,6 @@
 class TwitchStatusChecker {
     constructor() {
-        this.channelName = 'djkridp'; // 改回您的頻道
+        this.channelName = 'djkridp'; // Ändern Sie zu Ihrem Kanal
         this.offlineView = document.getElementById('twitch-offline-view');
         this.liveView = document.getElementById('twitch-live-view');
         this.checkInterval = null;
@@ -17,7 +17,7 @@ class TwitchStatusChecker {
 
     async checkStatus() {
         try {
-            // 檢查直播狀態
+            // Live-Status prüfen
             const response = await fetch(`https://decapi.me/twitch/uptime/${this.channelName}`);
             const uptime = await response.text();
             
@@ -37,14 +37,14 @@ class TwitchStatusChecker {
         
         if (this.offlineView && this.liveView) {
             if (isLive) {
-                // 顯示直播播放器
+                // Live-Player anzeigen
                 this.offlineView.style.display = 'none';
                 this.liveView.style.display = 'flex';
                 
-                // 確保播放器載入
+                // Sicherstellen, dass Player geladen ist
                 this.ensurePlayerLoaded();
             } else {
-                // 顯示離線預覽
+                // Offline-Vorschau anzeigen
                 this.offlineView.style.display = 'flex';
                 this.liveView.style.display = 'none';
             }
@@ -52,14 +52,14 @@ class TwitchStatusChecker {
     }
 
     ensurePlayerLoaded() {
-        // JavaScript 播放器會自動初始化，不需要重新載入
-        console.log('Twitch JavaScript 播放器已準備');
+        // JavaScript-Player wird automatisch initialisiert, kein Neuladen erforderlich
+        console.log('Twitch JavaScript-Player bereit');
     }
 
     startAutoCheck() {
         this.checkInterval = setInterval(() => {
             this.checkStatus();
-        }, 30000); // 每30秒檢查一次，更快響應直播開始
+        }, 30000); // Alle 30 Sekunden prüfen für schnellere Reaktion auf Livestart
     }
 
     stopAutoCheck() {
@@ -70,7 +70,7 @@ class TwitchStatusChecker {
     }
 }
 
-// 當 DOM 載入完成後初始化
+// Initialisierung nach DOM-Laden
 document.addEventListener('DOMContentLoaded', () => {
     new TwitchStatusChecker();
 });

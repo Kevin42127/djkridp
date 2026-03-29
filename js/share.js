@@ -1,4 +1,4 @@
-// 分享功能 - 簡化版本
+// Teilen-Funktion - vereinfachte Version
 document.addEventListener('DOMContentLoaded', () => {
   const shareButton = document.getElementById('share-button');
   const shareMenu = document.getElementById('share-menu');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const shareUrlInput = document.getElementById('share-url-input');
   const shareCopyBtn = document.getElementById('share-copy-btn');
 
-  // 設定當前網址
+  // Aktuelle URL festlegen
   function updateShareUrl() {
     const currentUrl = window.location.href;
     if (shareUrlInput) {
@@ -15,44 +15,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 打開分享選單
+  // Teilen-Menü öffnen
   function openShareMenu() {
     updateShareUrl();
     shareMenu.classList.add('active');
     shareMenu.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     
-    // 選中文字
+    // Text auswählen
     if (shareUrlInput) {
       shareUrlInput.select();
       shareUrlInput.setSelectionRange(0, shareUrlInput.value.length);
     }
   }
 
-  // 關閉分享選單
+  // Teilen-Menü schließen
   function closeShareMenu() {
     shareMenu.classList.remove('active');
     shareMenu.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
-  // 複製連結功能
+  // Link-Kopierfunktion
   async function copyUrl() {
     try {
       const url = shareUrlInput.value;
       
-      // 使用現代 Clipboard API
+      // Moderne Clipboard API verwenden
       await navigator.clipboard.writeText(url);
       
-      // 顯示複製成功狀態
+      // Kopier-Erfolg anzeigen
       showCopySuccess();
       
-      // 重新選中文字
+      // Text erneut auswählen
       shareUrlInput.select();
       shareUrlInput.setSelectionRange(0, shareUrlInput.value.length);
       
     } catch (err) {
-      // 備用方法
+      // Backup-Methode
       const textArea = document.createElement('textarea');
       textArea.value = shareUrlInput.value;
       document.body.appendChild(textArea);
@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       showCopySuccess();
       
-      // 重新選中文字
+      // Text erneut auswählen
       shareUrlInput.select();
       shareUrlInput.setSelectionRange(0, shareUrlInput.value.length);
     }
   }
 
-  // 顯示複製成功狀態
+  // Kopier-Erfolg anzeigen
   function showCopySuccess() {
     if (shareCopyBtn) {
       shareCopyBtn.classList.add('copied');
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 點擊文字框時選中所有文字
+  // Bei Klick auf Textfeld gesamten Text auswählen
   if (shareUrlInput) {
     shareUrlInput.addEventListener('click', () => {
       shareUrlInput.select();
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 事件監聽器
+  // Event-Listener
   if (shareButton) {
     shareButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -118,14 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ESC 鍵關閉選單
+  // ESC-Taste schließt Menü
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && shareMenu.classList.contains('active')) {
       closeShareMenu();
     }
   });
 
-  // Ctrl/Cmd + C 快捷鍵複製
+  // Ctrl/Cmd + C Shortcut zum Kopieren
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'c' && shareMenu.classList.contains('active')) {
       e.preventDefault();
@@ -133,12 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 監聽頁面變化更新網址
+  // Seitenänderungen überwachen und URL aktualisieren
   let urlUpdateTimeout;
   window.addEventListener('popstate', () => {
     clearTimeout(urlUpdateTimeout);
     urlUpdateTimeout = setTimeout(updateShareUrl, 100);
   });
 
-  console.log('簡化分享功能已初始化');
+  console.log('Vereinfachte Teilen-Funktion initialisiert');
 });

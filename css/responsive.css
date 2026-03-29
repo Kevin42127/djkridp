@@ -244,7 +244,7 @@
     display: none !important;
   }
   
-  /* 確保分享按鈕在小螢幕上仍然顯示 */
+  /* Sicherstellen, dass Teilen-Button auf kleinen Bildschirmen weiterhin angezeigt wird */
   .header-right {
     display: flex !important;
     align-items: center;
