@@ -52,8 +52,16 @@ class TwitchStatusChecker {
     }
 
     ensurePlayerLoaded() {
-        // JavaScript-Player wird automatisch initialisiert, kein Neuladen erforderlich
-        console.log('Twitch JavaScript-Player bereit');
+        // iframe-Player wird automatisch geladen, keine zusätzliche Initialisierung erforderlich
+        console.log('Twitch iframe-Player ist bereit');
+        
+        // Sicherstellen, dass der iframe korrekt geladen ist
+        const iframe = this.liveView.querySelector('iframe[src*="player.twitch.tv"]');
+        if (iframe) {
+            console.log('Twitch Player iframe gefunden und bereit');
+        } else {
+            console.log('Twitch Player iframe nicht gefunden');
+        }
     }
 
     startAutoCheck() {
