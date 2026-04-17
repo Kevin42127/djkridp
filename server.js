@@ -10,19 +10,19 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('.'));
 
-// PWA Manifest 支援
+// PWA Manifest Unterstützung
 app.get('/manifest.json', (req, res) => {
   res.setHeader('Content-Type', 'application/manifest+json');
   res.sendFile(path.join(__dirname, 'images', 'site.webmanifest'));
 });
 
-// Service Worker 支援
+// Service Worker Unterstützung
 app.get('/sw.js', (req, res) => {
   res.setHeader('Content-Type', 'application/javascript');
   res.sendFile(path.join(__dirname, 'sw.js'));
 });
 
-// PWA 圖標支援
+// PWA Icon Unterstützung
 app.get('/images/web-app-manifest-192x192.png', (req, res) => {
   res.sendFile(path.join(__dirname, 'images', 'web-app-manifest-192x192.png'));
 });
@@ -34,8 +34,8 @@ app.get('/images/web-app-manifest-512x512.png', (req, res) => {
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 if (!GROQ_API_KEY) {
-  console.error('錯誤: GROQ_API_KEY 環境變數未設置');
-  console.error('請在部署平台設置環境變數 GROQ_API_KEY');
+  console.error('Fehler: GROQ_API_KEY Umgebungsvariable nicht gesetzt');
+  console.error('Bitte setzen Sie die Umgebungsvariable GROQ_API_KEY auf der Deployment-Plattform');
   process.exit(1);
 }
 

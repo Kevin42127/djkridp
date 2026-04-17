@@ -1,4 +1,4 @@
-const CACHE_NAME = 'djkridp-v4'; // 更新版本號強制清除舊快取
+const CACHE_NAME = 'djkridp-v4'; // Versionsnummer aktualisiert, um alten Cache zu löschen
 const urlsToCache = [
   '/',
   '/index.html',
@@ -24,7 +24,7 @@ const urlsToCache = [
   '/images/site.webmanifest'
 ];
 
-// 安裝事件 - 緩存資源
+// Installationsereignis - Ressourcen zwischenspeichern
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -33,13 +33,13 @@ self.addEventListener('install', event => {
         return cache.addAll(urlsToCache);
       })
       .then(() => {
-        console.log('All resources cached');
-        self.skipWaiting(); // 立即激活新的 service worker
+        console.log('Alle Ressourcen zwischengespeichert');
+        self.skipWaiting(); // Neuen Service Worker sofort aktivieren
       })
   );
 });
 
-// 激活事件 - 清理舊緩存
+// Aktivierungsereignis - Alte Cache leeren
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -58,14 +58,14 @@ self.addEventListener('activate', event => {
   );
 });
 
-// 網路事件 - 智能快取策略
+// Netzwerkereignis - Intelligente Cache-Strategie
 self.addEventListener('fetch', event => {
-  // 對於 HTML 檔案，使用網路優先確保最新版本
+  // Für HTML-Dateien Netzwerk-Priorität verwenden, um neueste Version sicherzustellen
   if (event.request.destination === 'document') {
     event.respondWith(
       fetch(event.request)
         .then(response => {
-          // 網路成功，更新快取
+          // Netzwerk erfolgreich, Cache aktualisieren
           const responseToCache = response.clone();
           caches.open(CACHE_NAME)
             .then(cache => {
@@ -74,22 +74,22 @@ self.addEventListener('fetch', event => {
           return response;
         })
         .catch(() => {
-          // 網路失敗，使用快取
+          // Netzwerk fehlgeschlagen, Cache verwenden
           return caches.match(event.request);
         })
     );
     return;
   }
 
-  // 對於 CSS/JS 檔案，使用快取優先但檢查更新
+  // Für CSS/JS-Dateien Cache-Priorität verwenden, aber auf Updates prüfen
   if (event.request.url.includes('/css/') || event.request.url.includes('/js/')) {
     event.respondWith(
       caches.match(event.request)
         .then(cachedResponse => {
-          // 先嘗試網路檢查是否有更新
+          // Zuerst Netzwerk prüfen, ob Updates verfügbar sind
           const fetchPromise = fetch(event.request)
             .then(networkResponse => {
-              // 網路成功，更新快取
+              // Netzwerk erfolgreich, Cache aktualisieren
               caches.open(CACHE_NAME)
                 .then(cache => {
                   cache.put(event.request, networkResponse.clone());
@@ -97,13 +97,13 @@ self.addEventListener('fetch', event => {
               return networkResponse;
             })
             .catch(() => {
-              // 網路失敗，使用快取
+              // Netzwerk fehlgeschlagen, Cache verwenden
               return cachedResponse;
             });
 
-          // 如果有快取，先返回快取，背景更新
+          // Wenn Cache vorhanden, zuerst zurückgeben und im Hintergrund aktualisieren
           if (cachedResponse) {
-            // 背景檢查更新
+            // Im Hintergrund auf Updates prüfen
             fetch(event.request)
               .then(networkResponse => {
                 if (networkResponse.ok) {
@@ -116,14 +116,14 @@ self.addEventListener('fetch', event => {
             return cachedResponse;
           }
 
-          // 沒有快取，等待網路
+          // Kein Cache vorhanden, auf Netzwerk warten
           return fetchPromise;
         })
     );
     return;
   }
 
-  // 其他資源使用原來的網路優先策略
+  // Andere Ressourcen verwenden ursprüngliche Netzwerk-First-Strategie
   event.respondWith(
     fetch(event.request)
       .then(response => {
@@ -154,7 +154,7 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// 後台消息處理
+// Hintergrund-Nachrichtenverarbeitung
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();

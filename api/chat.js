@@ -3,7 +3,7 @@ const { Groq } = require('groq-sdk');
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 if (!GROQ_API_KEY) {
-  console.error('錯誤: GROQ_API_KEY 環境變數未設置');
+  console.error('Fehler: GROQ_API_KEY Umgebungsvariable nicht gesetzt');
 }
 
 const WEBSITE_INFO = `DJKridP ist ein Multi-Genre DJ aus Osnabrück, Deutschland. Er ist ehemaliges Mitglied von Future Breeze. Seit Ende der 90er Jahre spielt er DJ-Sets in Deutschland, Kanada, Südafrika, Japan, Russland, Polen, Spanien, Italien und vielen weiteren Ländern. Er hat über 20 Jahre Erfahrung als DJ. Seine Werke umfassen Multi-Genre Sets, Future Breeze Projekte und Live Performances auf internationalen Bühnen. Kontakt: Twitch (https://www.twitch.tv/djkridp), Instagram (https://www.instagram.com/dj_krid_p), TikTok (https://www.tiktok.com/@krid_p), Facebook (https://www.facebook.com/djkridp/), WhatsApp (https://www.whatsapp.com/channel/0029Vb6FeSm9hXF7H6qEIk3k), Discord (https://discord.gg/3xmER2Gc3B), Spotify (https://open.spotify.com/user/eluw6nthyi6sd3wjcydx6rojx), StreamElements (https://streamelements.com/djkridp/tip).`;
@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   }
 
   if (!GROQ_API_KEY) {
-    return res.status(500).json({ error: 'GROQ_API_KEY 環境變數未設置' });
+    return res.status(500).json({ error: 'GROQ_API_KEY Umgebungsvariable nicht gesetzt' });
   }
 
   const groq = new Groq({
