@@ -267,10 +267,11 @@
                 </div>
                 
                 <div class="spotify-embed-container">
-                    <h2>Für die vollständige Version besuche mein <a href="https://open.spotify.com/user/eluw6nthyi6sd3wjcydx6rojx" target="_blank" rel="noopener noreferrer" class="spotify-link">Spotify</a></h2>
+                    <h2 id="spotify-title">DJKridP Spotify Playlist</h2>
                     <iframe 
+                        id="spotify-iframe"
                         style="border-radius:12px" 
-                        src="https://open.spotify.com/embed/playlist/2IsQ8BxONRvSPHXJjiUEbj?utm_source=generator&theme=0&go=1&sp_cid=6a44e72ca19d63d9a09055fb8b8df3ac&t=11&nd=1&dlsi=bad78d7e70aa4a2e" 
+                        src="" 
                         width="100%" 
                         height="450" 
                         frameBorder="0" 
@@ -279,6 +280,69 @@
                         loading="lazy">
                     </iframe>
                 </div>
+                
+                <!-- Dynamic Spotify Playlist Script -->
+                <script>
+                    // Playlist mapping by day of week
+                    const weeklyPlaylists = {
+                        2: { // Tuesday (Tuesday = 2 in JavaScript)
+                            id: '2gczqzaKrzs4yVsWpEnCzX',
+                            title: 'DJKridP Tuesday Playlist',
+                            url: 'https://open.spotify.com/playlist/2gczqzaKrzs4yVsWpEnCzX'
+                        },
+                        3: { // Wednesday
+                            id: '5ycieSbglZB0MN63agWIEQ',
+                            title: 'DJKridP Wednesday Playlist',
+                            url: 'https://open.spotify.com/playlist/5ycieSbglZB0MN63agWIEQ'
+                        },
+                        4: { // Thursday
+                            id: '2IsQ8BxONRvSPHXJjiUEbj',
+                            title: 'DJKridP Thursday Playlist',
+                            url: 'https://open.spotify.com/playlist/2IsQ8BxONRvSPHXJjiUEbj'
+                        }
+                    };
+                    
+                    // Default playlist for other days
+                    const defaultPlaylist = {
+                        id: '2IsQ8BxONRvSPHXJjiUEbj',
+                        title: 'DJKridP Multi-Genre Playlist',
+                        url: 'https://open.spotify.com/playlist/2IsQ8BxONRvSPHXJjiUEbj'
+                    };
+                    
+                    // Function to load playlist based on current day
+                    function loadDailyPlaylist() {
+                        const currentDay = new Date().getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+                        const playlist = weeklyPlaylists[currentDay] || defaultPlaylist;
+                        
+                        // Update title
+                        const titleElement = document.getElementById('spotify-title');
+                        if (titleElement) {
+                            titleElement.innerHTML = `Für die vollständige Version besuche mein <a href="https://open.spotify.com/user/eluw6nthyi6sd3wjcydx6rojx?nd=1&dlsi=2defb229291d40e7" target="_blank" rel="noopener noreferrer" class="spotify-link">Spotify</a>`;
+                        }
+                        
+                        // Update iframe src
+                        const iframe = document.getElementById('spotify-iframe');
+                        if (iframe) {
+                            const embedUrl = `https://open.spotify.com/embed/playlist/${playlist.id}?utm_source=generator&theme=0&go=1&sp_cid=6a44e72ca19d63d9a09055fb8b8df3ac&t=11&nd=1&dlsi=bad78d7e70aa4a2e`;
+                            iframe.src = embedUrl;
+                        }
+                        
+                        console.log(`Loaded playlist for day ${currentDay}: ${playlist.title}`);
+                    }
+                    
+                    // Load playlist when DOM is ready
+                    document.addEventListener('DOMContentLoaded', function() {
+                        loadDailyPlaylist();
+                    });
+                    
+                    // Optional: Update playlist at midnight
+                    setInterval(function() {
+                        const now = new Date();
+                        if (now.getHours() === 0 && now.getMinutes() === 0) {
+                            loadDailyPlaylist();
+                        }
+                    }, 60000); // Check every minute
+                </script>
                 
                 <div class="spotify-embed-container">
                     <h2>Live Streaming auf <a href="https://www.twitch.tv/djkridp" target="_blank" rel="noopener noreferrer" class="twitch-link">Twitch</a></h2>
