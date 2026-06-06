@@ -16,8 +16,8 @@ body {
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
   line-height: 1.6;
-  color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
+  color: var(--on-surface);
+  background-color: var(--midnight-base);
   transition: background-color var(--transition-base), color var(--transition-base);
   padding-top: 0;
   opacity: 0;
@@ -29,9 +29,52 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #8b5cf6 100%);
+  background: var(--midnight-base);
   position: relative;
   padding-top: 90px;
+  overflow: hidden;
+}
+
+#home::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: -25%;
+  width: 600px;
+  height: 600px;
+  background: var(--neon-purple-glow);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+#home::after {
+  content: '';
+  position: absolute;
+  bottom: 25%;
+  right: -25%;
+  width: 600px;
+  height: 600px;
+  background: var(--electric-cyan-glow);
+  filter: blur(120px);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  #home::before {
+    width: 300px;
+    height: 300px;
+    left: -50%;
+    filter: blur(80px);
+  }
+
+  #home::after {
+    width: 300px;
+    height: 300px;
+    right: -50%;
+    filter: blur(80px);
+  }
 }
 
 @keyframes fadeIn {
@@ -144,7 +187,7 @@ button {
 
 /* Vollbreiten-Hintergrundbereich */
 #about {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--surface);
 }
 
 #about .container {
@@ -155,7 +198,7 @@ button {
 }
 
 #tours {
-  background-color: var(--color-bg-tours);
+  background-color: var(--surface-container-lowest);
 }
 
 #tours .container {
@@ -166,7 +209,7 @@ button {
 }
 
 #works {
-  background-color: var(--color-bg-works);
+  background-color: var(--surface);
 }
 
 #works .container {
@@ -177,14 +220,27 @@ button {
 }
 
 #contact {
-  background-color: var(--color-bg-contact);
+  background-color: var(--surface);
   min-height: auto;
   display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--neon-purple-glow);
+  transform: skewY(-3deg);
+  transform-origin: right;
+  z-index: 0;
+  opacity: 0.05;
 }
 
 #contact.section {
-  padding: var(--spacing-3xl) 0;
-  padding-bottom: var(--spacing-3xl);
+  padding: 120px 0;
+  padding-bottom: 120px;
   min-height: auto;
   display: block;
 }
