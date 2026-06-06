@@ -1,7 +1,5 @@
 .header {
-  background-color: var(--surface-glass);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background-color: var(--midnight-base);
   position: fixed;
   top: 0;
   left: 0;
