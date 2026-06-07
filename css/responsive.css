@@ -14,9 +14,8 @@
     left: 0;
     right: 0;
     width: 100%;
-    background-color: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-top: none;
+    background-color: var(--midnight-base);
+    border: none;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease-in-out;
     opacity: 0;
@@ -55,8 +54,8 @@
     text-align: left;
     padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: 0;
-    color: var(--color-text-primary);
-    border-bottom: 1px solid var(--color-border);
+    color: var(--on-surface);
+    border-bottom: none;
     text-decoration: none;
     transition: all var(--transition-base);
   }
