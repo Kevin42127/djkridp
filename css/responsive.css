@@ -98,6 +98,18 @@
   .works-grid {
     grid-template-columns: 1fr;
   }
+
+  #about .content-section {
+    grid-template-columns: 1fr;
+  }
+
+  #about .card:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .works-grid .card:nth-child(3) {
+    grid-column: auto;
+  }
   
   .contact-links {
     flex-direction: column;

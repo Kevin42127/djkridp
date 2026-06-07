@@ -445,9 +445,13 @@
 
 
 #about .content-section {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-xl);
+}
+
+#about .card:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 #about .card {
@@ -578,9 +582,13 @@
 
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-xl);
   margin-top: var(--spacing-xl);
+}
+
+.works-grid .card:nth-child(3) {
+  grid-column: 1 / -1;
 }
 
 .spotify-embed-container {
