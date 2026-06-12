@@ -25,6 +25,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom Text Selection */
+::selection {
+  background-color: var(--neon-purple);
+  color: var(--color-text-white);
+}
+
+::-moz-selection {
+  background-color: var(--neon-purple);
+  color: var(--color-text-white);
+}
+
 #home {
   min-height: 100vh;
   display: flex;
