@@ -20,14 +20,14 @@ const languageData = {
       location: 'Osnabrück, Deutschland',
       since: 'Seit Ende der 90er Jahre aktiv',
       description2: 'Als Multi-Genre DJ bringe ich eine vielseitige Musikauswahl in meine Sets. Meine Erfahrung reicht von den Anfängen in den 90er Jahren bis heute, wo ich weiterhin auf internationalen Bühnen performe.',
-      description3: 'Meine Karriere als DJ begann Ende der 90er Jahre und hat mich durch zahlreiche Länder geführt. Als ehemaliges Mitglied von Future Breeze habe ich Erfahrung in der elektronischen Musikszene gesammelt und setze diese bis heute fort.'
+      description3: 'Meine Karriere als DJ begann Ende der 90er Jahre und hat mich durch zahlreiche Länder geführt. Als ehemaliges Mitglied von Future Breeze habe ich Erfahrung in der elektronischen Musikszene gesammelt und setze diese bis heute fort.',
+      experience: 'Internationale Erfahrung',
+      experienceDesc: 'Seit Ende der 90er Jahre habe ich auf internationalen Bühnen gespielt und meine Musik in verschiedenen Ländern und Kulturen geteilt. Jede Tour war eine einzigartige Erfahrung und hat meine Musik und mein Verständnis für verschiedene Musikstile erweitert.'
     },
     tours: {
       title: 'Tours',
       subtitle: 'Länder, in denen ich gespielt habe',
-      countries: ['Deutschland', 'Kanada', 'Südafrika', 'Japan', 'Russland', 'Polen', 'Spanien', 'Italien'],
-      experience: 'Internationale Erfahrung',
-      experienceDesc: 'Seit Ende der 90er Jahre habe ich auf internationalen Bühnen gespielt und meine Musik in verschiedenen Ländern und Kulturen geteilt. Jede Tour war eine einzigartige Erfahrung und hat meine Musik und mein Verständnis für verschiedene Musikstile erweitert.'
+      countries: ['Deutschland', 'Kanada', 'Südafrika', 'Japan', 'Russland', 'Polen', 'Spanien', 'Italien']
     },
     works: {
       title: 'Werke',
@@ -72,14 +72,14 @@ const languageData = {
       location: 'Osnabrück, Germany',
       since: 'Active since the end of the 90s',
       description2: 'As a Multi-Genre DJ, I bring a diverse selection of music to my sets. My experience ranges from the beginnings in the 90s to today, where I continue to perform on international stages.',
-      description3: 'My career as a DJ began in the late 90s and has taken me through numerous countries. As an ex member of Future Breeze, I have gained experience in the electronic music scene and continue this to this day.'
+      description3: 'My career as a DJ began in the late 90s and has taken me through numerous countries. As an ex member of Future Breeze, I have gained experience in the electronic music scene and continue this to this day.',
+      experience: 'International Experience',
+      experienceDesc: 'Since the end of the 90s, I have played on international stages and shared my music in different countries and cultures. Each tour was a unique experience that has expanded my music and understanding of different musical styles.'
     },
     tours: {
       title: 'Tours',
       subtitle: 'Countries where I have performed',
-      countries: ['Germany', 'Canada', 'South Africa', 'Japan', 'Russia', 'Poland', 'Spain', 'Italy'],
-      experience: 'International Experience',
-      experienceDesc: 'Since the end of the 90s, I have played on international stages and shared my music in different countries and cultures. Each tour was a unique experience that has expanded my music and understanding of different musical styles.'
+      countries: ['Germany', 'Canada', 'South Africa', 'Japan', 'Russia', 'Poland', 'Spain', 'Italy']
     },
     works: {
       title: 'Works',
