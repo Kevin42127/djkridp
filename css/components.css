@@ -87,7 +87,7 @@
   color: var(--on-surface-variant);
   font-weight: 500;
   padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 50px;
+  border-radius: 4px;
   display: block;
   outline: none !important;
   position: relative;
@@ -96,12 +96,28 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: var(--font-size-sm);
+  overflow: hidden;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(14, 165, 233, 1);
+  transition: left 0.3s ease;
+  z-index: -1;
 }
 
 .nav-link:hover {
-  background-color: transparent;
-  color: var(--electric-cyan);
-  border-radius: 50px;
+  color: #ffffff;
+  border-radius: 4px;
+}
+
+.nav-link:hover::before {
+  left: 0;
 }
 
 .nav-install {
@@ -119,7 +135,7 @@
 .nav-install:hover {
   background-color: transparent;
   color: var(--neon-purple) !important;
-  border-radius: 50px;
+  border-radius: 4px;
   text-decoration: none;
 }
 
