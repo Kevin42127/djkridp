@@ -426,8 +426,8 @@
 .dock-container {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 16px;
+  gap: 16px;
+  padding: 12px 20px;
   background: rgba(30, 41, 59, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
