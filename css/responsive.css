@@ -91,12 +91,7 @@
     position: relative;
   }
   
-  .mobile-menu-toggle {
-    display: flex !important;
-    z-index: 1001;
-    position: relative;
-  }
-  
+    
   .hero-title {
     font-size: var(--font-size-3xl);
     margin-top: var(--spacing-sm);
@@ -273,10 +268,7 @@
     border-radius: 4px !important;
   }
   
-  .mobile-menu-toggle {
-    display: none !important;
-  }
-  
+    
   /* Sicherstellen, dass Teilen-Button auf kleinen Bildschirmen weiterhin angezeigt wird */
   .header-right {
     display: flex !important;
