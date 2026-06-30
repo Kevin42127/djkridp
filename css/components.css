@@ -432,7 +432,7 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
+  border-radius: 50px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
               0 0 0 1px rgba(255, 255, 255, 0.05),
               inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -444,7 +444,7 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  border-radius: 16px;
+  border-radius: 50%;
   color: rgba(255, 255, 255, 0.6);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -474,7 +474,7 @@
   background: var(--electric-cyan);
   opacity: 0;
   transition: opacity 0.3s ease;
-  border-radius: 16px;
+  border-radius: 50%;
 }
 
 .dock-item .material-symbols-outlined {
@@ -1341,7 +1341,7 @@
 
 @media (max-width: 768px) {
   .ai-chat-button {
-    bottom: 1rem;
+    bottom: 10rem;
     right: 1rem;
     width: 56px;
     height: 56px;
@@ -2904,7 +2904,7 @@ body > footer.footer {
 
 @media (max-width: 768px) {
   .ai-chat-button {
-    bottom: 1rem;
+    bottom: 10rem;
     right: 1rem;
     width: 56px;
     height: 56px;
