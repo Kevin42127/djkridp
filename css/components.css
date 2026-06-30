@@ -2015,66 +2015,6 @@ body > footer.footer {
   margin-top: 0 !important;
 }
 
-.scroll-up {
-  position: fixed;
-  right: 3rem;
-  bottom: -50%;
-  z-index: 1000;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: rgba(29, 29, 31, 0.7);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-  transition: bottom 0.4s, transform 0.4s;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.scroll-up:hover {
-  transform: none;
-}
-
-.scroll-up:focus-visible {
-  outline: 2px solid var(--neon-purple);
-  outline-offset: 2px;
-}
-
-._show-scroll {
-  bottom: calc(2rem + 64px + 1rem);
-}
-
-.scroll-up-arrow {
-  display: block;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 8px solid var(--color-text-white);
-  margin: 0;
-}
-
-@media (max-width: 1199.98px) {
-  .scroll-up {
-    right: 1rem;
-  }
-
-  .scroll-up._show-scroll {
-    bottom: calc(1rem + 64px + 1rem);
-  }
-}
-
-@media (max-width: 768px) {
-  .scroll-up._show-scroll {
-    bottom: calc(1rem + 56px + 1rem);
-  }
-}
-
 .nav-overlay {
   position: fixed;
   top: 80px; /* Beginnt unter dem Header, angenommen Header-Höhe ca. 80px */

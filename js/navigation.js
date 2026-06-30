@@ -157,28 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
-  const scrollUpButton = document.getElementById('scroll-up');
-  if (scrollUpButton) {
-    function toggleScrollUp() {
-      if (window.pageYOffset > 300) {
-        scrollUpButton.classList.add('_show-scroll');
-      } else {
-        scrollUpButton.classList.remove('_show-scroll');
-      }
-    }
-
-    window.addEventListener('scroll', toggleScrollUp, { passive: true });
-    toggleScrollUp();
-
-    scrollUpButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  }
-
   // Hash-basiertes Scrollen nur für manuelle Navigation, nicht für Reload
   // Browser-Standardverhalten für Scroll-Restoration beibehalten
 
