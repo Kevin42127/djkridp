@@ -744,6 +744,58 @@
   border-radius: var(--border-radius-md);
 }
 
+/* SoundCloud Embed Styles */
+.soundcloud-embed-container {
+  max-width: 1000px;
+  margin: var(--spacing-3xl) auto 0;
+  padding: var(--spacing-xl);
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.soundcloud-title {
+  color: var(--color-text-white);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-md) 0;
+  text-align: center;
+}
+
+.soundcloud-credits {
+  margin-top: var(--spacing-sm);
+  text-align: center;
+  font-size: 10px;
+  color: #cccccc;
+  line-break: anywhere;
+  word-break: normal;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+}
+
+.soundcloud-credits a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.soundcloud-credits a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .soundcloud-title {
+    font-size: var(--font-size-lg);
+  }
+
+  .soundcloud-embed-container {
+    padding: var(--spacing-md);
+  }
+}
+
 .twitch-live-container {
   max-width: 1000px;
   margin: var(--spacing-3xl) auto 0;
