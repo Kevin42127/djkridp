@@ -30,8 +30,17 @@
 
 /* Responsive Footer */
 @media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
   .footer-email-label,
   .footer-email-link {
     font-size: var(--font-size-xs);
+  }
+
+  .dmca-badge-container img {
+    max-width: 160px !important;
   }
 }

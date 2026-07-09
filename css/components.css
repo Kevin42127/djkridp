@@ -513,10 +513,12 @@
   width: 100%;
   padding: 0 var(--spacing-lg);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-lg);
   text-align: center;
+}
 }
 
 .footer-links {
@@ -2001,6 +2003,49 @@ main {
 
 body > footer.footer {
   margin-top: 0 !important;
+}
+
+/* Twitch Banner */
+.twitch-banner {
+  padding: var(--spacing-2xl) 0;
+  background: #9146FF;
+  position: relative;
+  overflow: hidden;
+}
+
+.twitch-banner-content {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.twitch-banner-text {
+  display: inline-block;
+  font-size: var(--font-size-2xl);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .twitch-banner-text {
+    font-size: var(--font-size-xl);
+    letter-spacing: 1px;
+  }
 }
 
 .nav-overlay {
