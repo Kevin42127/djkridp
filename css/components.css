@@ -766,6 +766,17 @@
   color: var(--color-text-white);
   text-decoration: none;
   transition: color var(--transition-base);
+  outline: none !important;
+}
+
+.soundcloud-album-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.soundcloud-album-link:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .soundcloud-album-link:hover {
