@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* Remove browser native focus outline */
+*:focus {
+  outline: none !important;
+}
+
+*:focus-visible {
+  outline: none !important;
+}
+
 html {
   font-size: 16px;
   /* scroll-behavior: smooth; */ /* Kann Browser-Scroll-Restoration stören */

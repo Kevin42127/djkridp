@@ -28,6 +28,31 @@
   outline-offset: 2px;
 }
 
+/* Footer Links */
+.footer-links {
+  margin-top: 0;
+}
+
+.footer-sitemap-link {
+  color: var(--color-text-white);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
+}
+
+.footer-sitemap-link:hover {
+  color: #cccccc;
+  text-decoration: underline;
+}
+
+/* Footer Content Layout */
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
 /* Responsive Footer */
 @media (max-width: 768px) {
   .footer-content {
