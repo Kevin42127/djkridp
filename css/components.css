@@ -2092,6 +2092,7 @@ body > footer.footer {
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
+  display: flex;
 }
 
 .twitch-banner-text {
@@ -2102,6 +2103,7 @@ body > footer.footer {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
+  padding-right: 50px;
   animation: marquee 20s linear infinite;
 }
 
