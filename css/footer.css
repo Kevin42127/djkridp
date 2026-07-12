@@ -45,6 +45,18 @@
   text-decoration: underline;
 }
 
+/* DMCA Badge */
+.dmca-badge {
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+}
+
+.dmca-badge img {
+  display: block;
+  max-width: 150px;
+  height: auto;
+}
+
 /* Footer Content Layout */
 .footer-content {
   display: flex;
