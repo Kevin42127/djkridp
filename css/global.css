@@ -432,3 +432,8 @@ button {
   letter-spacing: 0.05em;
 }
 
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
