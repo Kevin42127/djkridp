@@ -99,7 +99,7 @@ Antworte auf Deutsch und verwende die obigen Informationen über DJKridP, um die
 
     const chatCompletion = await groq.chat.completions.create({
       messages: messages,
-      model: 'llama-3.1-8b-instant',
+      model: 'openai/gpt-oss-120b',
       temperature: 0.2,
       max_completion_tokens: 1024,
       top_p: 0.8,

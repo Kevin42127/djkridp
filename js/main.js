@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    const lang = localStorage.getItem('language') || 'de';
-    document.documentElement.lang = lang;
-
-    const elements = document.querySelectorAll('[data-language]');
-    elements.forEach(element => {
-      element.style.opacity = '1';
-    });
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
 
     // Scroll Reveal Animation
     const observerOptions = {
