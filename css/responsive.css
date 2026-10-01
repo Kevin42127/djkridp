@@ -74,6 +74,12 @@
     z-index: -1;
   }
 
+  .nav-link::after,
+  .nav-link span::before,
+  .nav-link span::after {
+    display: none;
+  }
+
   .nav-link:hover {
     color: #ffffff;
     border-radius: 4px;
