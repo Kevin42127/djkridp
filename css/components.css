@@ -459,7 +459,7 @@
   align-items: center;
   gap: 16px;
   padding: 12px 20px;
-  background: rgba(30, 41, 59, 0.8);
+  background: var(--surface-container);
   border: none;
   border-radius: 50px;
 }
@@ -1552,7 +1552,7 @@
 }
 
 .contact-title {
-  font-size: 40px;
+  font-size: clamp(28px, 6vw, 40px);
   line-height: 48px;
   font-weight: 700;
   color: #ffffff;
@@ -1648,8 +1648,8 @@
 }
 
 .contact-link:hover {
-  background-color: var(--neon-purple);
-  border-color: var(--neon-purple);
+  background-color: #0891b2;
+  border-color: #0891b2;
   color: var(--color-text-white);
 }
 
@@ -1780,8 +1780,8 @@
 }
 
 .contact-link:hover {
-  background-color: var(--neon-purple);
-  border-color: var(--neon-purple);
+  background-color: #0891b2;
+  border-color: #0891b2;
   color: var(--color-text-white);
 }
 
@@ -2160,6 +2160,8 @@ body > footer.footer {
 
 .twitch-banner-text {
   display: inline-block;
+  flex-shrink: 0;
+  min-width: 100%;
   font-size: var(--font-size-2xl);
   font-weight: 900;
   color: #ffffff;
@@ -2172,7 +2174,7 @@ body > footer.footer {
 
 @keyframes marquee {
   0% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-100%);

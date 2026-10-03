@@ -147,19 +147,7 @@
     <link rel="stylesheet" href="css/footer.css?v=1.2.5">
 </head>
 <body>
-    <!-- Loading Animation -->
-    <div id="loading-overlay" class="loading-overlay">
-        <div class="loading-spinner">
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-            <div class="spinner-ring"></div>
-        </div>
-        <div class="loading-text">DJKridP</div>
-        <div class="progress-bar-container">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <div class="progress-text" id="progress-text">0%</div>
-    </div>
+
 
     <header class="header">
         <div class="header-content">
@@ -171,7 +159,7 @@
                     <li><a href="#tours" class="nav-link" aria-label="Tours"><span>Tours</span></a></li>
                     <li><a href="#works" class="nav-link" aria-label="Werke"><span>Werke</span></a></li>
                     <li><a href="#contact" class="nav-link" aria-label="Kontakt"><span>Kontakt</span></a></li>
-                    <li><a href="https://djkridp.vercel.app/sitemap.xml" target="_blank" class="nav-link" aria-label="Sitemap"><span>Sitemap</span></a></li>
+                    <!-- <li><a href="https://djkridp.vercel.app/sitemap.xml" target="_blank" class="nav-link" aria-label="Sitemap"><span>Sitemap</span></a></li> -->
                 </ul>
             </nav>
             <div class="header-actions">
@@ -371,7 +359,7 @@
                     <div id="twitch-offline-view" style="display: block;">
                         <img src="images/offline.jpg" 
                              alt="Twitch Preview" 
-                             style="border-radius:12px; width:100%; height:450px; object-fit:cover;"
+                             style="border-radius:12px; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; display:block;"
                              loading="lazy"
                              onerror="this.src='https://via.placeholder.com/1000x450/1a1a1a/9146FF?text=OFFLINE'">
                     </div>
@@ -379,7 +367,7 @@
                     <!-- Live-Player anzeigen -->
                     <div id="twitch-live-view" style="display: none;">
                         <iframe
-                            style="border-radius:12px"
+                            style="border-radius:12px; width:100%; height:auto; aspect-ratio:16/9;"
                             src="https://player.twitch.tv/?channel=djkridp&parent=djkridp.vercel.app&parent=localhost&parent=127.0.0.1"
                             width="100%"
                             height="450"
@@ -412,11 +400,11 @@
                                 <span>TikTok</span>
                             </a>
                             <a class="contact-link" href="https://www.facebook.com/djkridp/" data-platform="facebook" target="_blank" rel="noopener noreferrer">
-                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><linearGradient id="a" x1="-319.25" x2="-319.25" y1="261.346" y2="248.919" gradientTransform="matrix(40 0 0 39.7778 13026.001 -9901.57)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#0062e0"/><stop offset="1" style="stop-color:#19afff"/></linearGradient><path d="M213.8 509.4C92.2 487.7 0 382.7 0 256 0 115.2 115.2 0 256 0s256 115.2 256 256c0 126.7-92.2 231.7-213.8 253.4l-14.1-11.5h-56.3z" style="fill:url(#a)"/><path d="m355.8 327.7 11.5-71.7h-67.8v-49.9c0-20.5 7.7-35.8 38.4-35.8h33.3V105c-17.9-2.6-38.4-5.1-56.3-5.1-58.9 0-99.8 35.8-99.8 99.8V256h-64v71.7h64v180.5c14.1 2.6 28.2 3.8 42.2 3.8 14.1 0 28.2-1.3 42.2-3.8V327.7z" style="fill:#fff"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><linearGradient id="fb-gradient" x1="-319.25" x2="-319.25" y1="261.346" y2="248.919" gradientTransform="matrix(40 0 0 39.7778 13026.001 -9901.57)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#0062e0"/><stop offset="1" style="stop-color:#19afff"/></linearGradient><path d="M213.8 509.4C92.2 487.7 0 382.7 0 256 0 115.2 115.2 0 256 0s256 115.2 256 256c0 126.7-92.2 231.7-213.8 253.4l-14.1-11.5h-56.3z" style="fill:url(#fb-gradient)"/><path d="m355.8 327.7 11.5-71.7h-67.8v-49.9c0-20.5 7.7-35.8 38.4-35.8h33.3V105c-17.9-2.6-38.4-5.1-56.3-5.1-58.9 0-99.8 35.8-99.8 99.8V256h-64v71.7h64v180.5c14.1 2.6 28.2 3.8 42.2 3.8 14.1 0 28.2-1.3 42.2-3.8V327.7z" style="fill:#fff"/></svg>
                                 <span>Facebook</span>
                             </a>
                             <a class="contact-link" href="https://www.whatsapp.com/channel/0029Vb6FeSm9hXF7H6qEIk3k" data-platform="whatsapp" target="_blank" rel="noopener noreferrer">
-                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><path d="m143.8 431.2 7.7 4.5c32.2 19.1 69.2 29.2 106.8 29.2h.1c115.7 0 209.8-94.1 209.9-209.8 0-56.1-21.8-108.8-61.4-148.4-39.3-39.5-92.7-61.7-148.4-61.5-115.8 0-209.9 94.1-210 209.8-.1 39.5 11.1 78.2 32.1 111.7l5 7.9L64.4 452zM3.7 512l35.8-130.8C17.5 342.9 5.8 299.5 5.9 255 5.9 115.8 119.2 2.6 258.4 2.6c67.5 0 130.9 26.3 178.6 74s73.9 111.1 73.9 178.6c-.1 139.2-113.3 252.4-252.5 252.4h-.1c-42.3 0-83.8-10.6-120.7-30.7z" style="fill:#b3b3b3"/><path d="M1.1 509.4 37 378.6C14.8 340.2 3.2 296.7 3.3 252.4 3.3 113.2 116.6 0 255.8 0c67.5 0 130.9 26.3 178.6 74s73.9 111.1 73.9 178.6C508.2 391.8 394.9 505 255.8 505h-.1c-42.3 0-83.8-10.6-120.7-30.7z" style="fill:#fff"/><path d="M255.8 42.6c-115.8 0-209.9 94.1-210 209.8 0 39.5 11.2 78.2 32.2 111.7l5 7.9-21.2 77.4 79.4-20.8 7.7 4.5c32.2 19.1 69.2 29.2 106.8 29.3h.1c115.7 0 209.8-94.1 209.9-209.8.2-55.7-21.9-109.1-61.4-148.4-39.3-39.5-92.8-61.7-148.5-61.6" style="fill:none"/><linearGradient id="a" x1="254.666" x2="256.793" y1="446.637" y2="87.926" gradientTransform="matrix(1 0 0 -1 0 514.448)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#57d163"/><stop offset="1" style="stop-color:#23b33a"/></linearGradient><path d="M255.8 42.6c-115.8 0-209.9 94.1-210 209.8 0 39.5 11.2 78.2 32.2 111.7l5 7.9-21.2 77.4 79.4-20.8 7.7 4.5c32.2 19.1 69.2 29.2 106.8 29.2h.1c115.7 0 209.8-94.1 209.9-209.8.2-55.7-21.9-109.1-61.4-148.4-39.3-39.4-92.8-61.6-148.5-61.5" style="fill:url(#a)"/><path d="M192.7 146.9c-4.7-10.5-9.7-10.7-14.2-10.9l-12.1-.1c-4.2 0-11 1.6-16.8 7.9s-22.1 21.6-22.1 52.6 22.6 61 25.8 65.2 43.6 69.9 107.8 95.2c53.3 21 64.1 16.8 75.7 15.8 11.6-1.1 37.3-15.3 42.6-30s5.3-27.4 3.7-30-5.8-4.2-12.1-7.4-37.3-18.4-43.1-20.5-10-3.2-14.2 3.2c-4.2 6.3-16.3 20.5-20 24.7s-7.4 4.7-13.7 1.6c-6.3-3.2-26.6-9.8-50.7-31.3-18.8-16.7-31.4-37.4-35.1-43.7s-.4-9.7 2.8-12.9c2.8-2.8 6.3-7.4 9.5-11.1s4.2-6.3 6.3-10.5 1.1-7.9-.5-11.1c-1.8-3-14-34.2-19.6-46.7" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><path d="m143.8 431.2 7.7 4.5c32.2 19.1 69.2 29.2 106.8 29.2h.1c115.7 0 209.8-94.1 209.9-209.8 0-56.1-21.8-108.8-61.4-148.4-39.3-39.5-92.7-61.7-148.4-61.5-115.8 0-209.9 94.1-210 209.8-.1 39.5 11.1 78.2 32.1 111.7l5 7.9L64.4 452zM3.7 512l35.8-130.8C17.5 342.9 5.8 299.5 5.9 255 5.9 115.8 119.2 2.6 258.4 2.6c67.5 0 130.9 26.3 178.6 74s73.9 111.1 73.9 178.6c-.1 139.2-113.3 252.4-252.5 252.4h-.1c-42.3 0-83.8-10.6-120.7-30.7z" style="fill:#b3b3b3"/><path d="M1.1 509.4 37 378.6C14.8 340.2 3.2 296.7 3.3 252.4 3.3 113.2 116.6 0 255.8 0c67.5 0 130.9 26.3 178.6 74s73.9 111.1 73.9 178.6C508.2 391.8 394.9 505 255.8 505h-.1c-42.3 0-83.8-10.6-120.7-30.7z" style="fill:#fff"/><linearGradient id="whatsapp_svg__a" x1="254.658" x2="256.786" y1="345.363" y2="704.074" gradientTransform="translate(0 -277.552)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#57d163"/><stop offset="1" style="stop-color:#23b33a"/></linearGradient><path d="M255.8 42.6c-115.8 0-209.9 94.1-210 209.8 0 39.5 11.2 78.2 32.2 111.7l5 7.9-21.2 77.4 79.4-20.8 7.7 4.5c32.2 19.1 69.2 29.2 106.8 29.2h.1c115.7 0 209.8-94.1 209.9-209.8.2-55.7-21.9-109.1-61.4-148.4-39.3-39.4-92.8-61.6-148.5-61.5" style="fill:url(#whatsapp_svg__a)"/><path d="M192.7 146.9c-4.7-10.5-9.7-10.7-14.2-10.9l-12.1-.1c-4.2 0-11 1.6-16.8 7.9s-22.1 21.6-22.1 52.6 22.6 61 25.8 65.2 43.6 69.9 107.8 95.2c53.3 21 64.1 16.8 75.7 15.8 11.6-1.1 37.3-15.3 42.6-30s5.3-27.4 3.7-30-5.8-4.2-12.1-7.4-37.3-18.4-43.1-20.5-10-3.2-14.2 3.2c-4.2 6.3-16.3 20.5-20 24.7s-7.4 4.7-13.7 1.6c-6.3-3.2-26.6-9.8-50.7-31.3-18.8-16.7-31.4-37.4-35.1-43.7s-.4-9.7 2.8-12.9c2.8-2.8 6.3-7.4 9.5-11.1s4.2-6.3 6.3-10.5 1.1-7.9-.5-11.1c-1.8-3-14-34.2-19.6-46.7" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"/></svg>
                                 <span>WhatsApp</span>
                             </a>
                             <a class="contact-link" href="https://discord.gg/3xmER2Gc3B" data-platform="discord" target="_blank" rel="noopener noreferrer">
@@ -435,7 +423,7 @@
                                 <span>Spotify</span>
                             </a>
                             <a class="contact-link" href="https://music.apple.com/tw/artist/krid-p/66265843" data-platform="apple-music" target="_blank" rel="noopener noreferrer">
-                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><linearGradient id="a" x1="256" x2="256" y1="2.978" y2="501.959" gradientTransform="matrix(1 0 0 -1 0 513)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#fa233b"/><stop offset="1" style="stop-color:#fb5c74"/></linearGradient><path d="M512 160.2v-18.3c0-5.1-.1-10.3-.2-15.4-.3-11.2-1-22.5-3-33.6-2-11.3-5.3-21.7-10.5-32-5.1-10.1-11.8-19.2-19.8-27.2S461.3 19 451.3 13.9c-10.2-5.2-20.7-8.5-32-10.5-11.1-2-22.4-2.7-33.6-3-5.1-.1-10.3-.2-15.4-.2H141.9c-5.1 0-10.3.1-15.4.2-11.2.3-22.5 1-33.6 3-11.3 2-21.7 5.3-32 10.5C50.8 19 41.6 25.7 33.7 33.7s-14.8 17-19.9 27.1C8.5 71 5.2 81.5 3.2 92.8c-2 11.1-2.7 22.4-3 33.6-.1 5.1-.2 10.3-.2 15.4v228.3c0 5.1.1 10.3.2 15.4.3 11.2 1 22.5 3 33.6 2 11.3 5.3 21.7 10.5 32 5.1 10.1 11.8 19.2 19.8 27.2s17.2 14.7 27.2 19.8c10.2 5.2 20.7 8.5 32 10.5 11.1 2 22.4 2.7 33.6 3 5.1.1 10.3.2 15.4.2H370c5.1 0 10.3-.1 15.4-.2 11.2-.3 22.5-1 33.6-3 11.3-2 21.7-5.3 32-10.5 10.1-5.1 19.3-11.8 27.2-19.8s14.7-17.2 19.8-27.2c5.2-10.2 8.5-20.7 10.5-32 2-11.1 2.7-22.4 3-33.6.1-5.1.2-10.3.2-15.4v-18.3z" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#a)"/><path d="M362 78.2c-1.2.1-12.2 2.1-13.6 2.3l-152.2 30.7h-.1c-4 .8-7.1 2.2-9.5 4.3-2.9 2.4-4.5 5.9-5.1 9.9-.1.9-.3 2.6-.3 5.1V321c0 4.5-.4 8.8-3.4 12.5s-6.7 4.8-11.1 5.7c-3.3.7-6.6 1.3-9.9 2-12.6 2.5-20.8 4.3-28.2 7.1-7.1 2.7-12.4 6.2-16.6 10.7-8.4 8.8-11.8 20.7-10.6 31.8 1 9.5 5.3 18.6 12.6 25.3 5 4.6 11.2 8 18.5 9.5 7.6 1.5 15.7 1 27.5-1.4 6.3-1.3 12.2-3.2 17.8-6.6 5.5-3.3 10.3-7.6 14-13 3.7-5.3 6.1-11.3 7.5-17.6 1.4-6.5 1.7-12.4 1.7-18.9v-165c0-8.8 2.5-11.2 9.6-12.9 0 0 126.5-25.5 132.4-26.7 8.2-1.6 12.1.8 12.1 9.4v112.8c0 4.5 0 9-3.1 12.7-3 3.7-6.7 4.8-11.1 5.7-3.3.7-6.6 1.3-9.9 2-12.6 2.5-20.8 4.3-28.2 7.1-7.1 2.7-12.4 6.2-16.6 10.7-8.4 8.8-12.1 20.7-10.9 31.8 1 9.5 5.6 18.6 12.9 25.3 5 4.6 11.2 7.9 18.5 9.4 7.6 1.5 15.7 1 27.5-1.4 6.3-1.3 12.2-3.2 17.8-6.5 5.5-3.3 10.3-7.6 14-13 3.7-5.3 6.1-11.3 7.5-17.6 1.4-6.5 1.4-12.4 1.4-18.9V91.7c-.1-8.8-4.7-14.2-12.9-13.5" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" class="music-icon"><linearGradient id="apple-music-gradient" x1="256" x2="256" y1="2.978" y2="501.959" gradientTransform="matrix(1 0 0 -1 0 513)" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:#fa233b"/><stop offset="1" style="stop-color:#fb5c74"/></linearGradient><path d="M512 160.2v-18.3c0-5.1-.1-10.3-.2-15.4-.3-11.2-1-22.5-3-33.6-2-11.3-5.3-21.7-10.5-32-5.1-10.1-11.8-19.2-19.8-27.2S461.3 19 451.3 13.9c-10.2-5.2-20.7-8.5-32-10.5-11.1-2-22.4-2.7-33.6-3-5.1-.1-10.3-.2-15.4-.2H141.9c-5.1 0-10.3.1-15.4.2-11.2.3-22.5 1-33.6 3-11.3 2-21.7 5.3-32 10.5C50.8 19 41.6 25.7 33.7 33.7s-14.8 17-19.9 27.1C8.5 71 5.2 81.5 3.2 92.8c-2 11.1-2.7 22.4-3 33.6-.1 5.1-.2 10.3-.2 15.4v228.3c0 5.1.1 10.3.2 15.4.3 11.2 1 22.5 3 33.6 2 11.3 5.3 21.7 10.5 32 5.1 10.1 11.8 19.2 19.8 27.2s17.2 14.7 27.2 19.8c10.2 5.2 20.7 8.5 32 10.5 11.1 2 22.4 2.7 33.6 3 5.1.1 10.3.2 15.4.2H370c5.1 0 10.3-.1 15.4-.2 11.2-.3 22.5-1 33.6-3 11.3-2 21.7-5.3 32-10.5 10.1-5.1 19.3-11.8 27.2-19.8s14.7-17.2 19.8-27.2c5.2-10.2 8.5-20.7 10.5-32 2-11.1 2.7-22.4 3-33.6.1-5.1.2-10.3.2-15.4v-18.3z" style="fill-rule:evenodd;clip-rule:evenodd;fill:url(#apple-music-gradient)"/><path d="M362 78.2c-1.2.1-12.2 2.1-13.6 2.3l-152.2 30.7h-.1c-4 .8-7.1 2.2-9.5 4.3-2.9 2.4-4.5 5.9-5.1 9.9-.1.9-.3 2.6-.3 5.1V321c0 4.5-.4 8.8-3.4 12.5s-6.7 4.8-11.1 5.7c-3.3.7-6.6 1.3-9.9 2-12.6 2.5-20.8 4.3-28.2 7.1-7.1 2.7-12.4 6.2-16.6 10.7-8.4 8.8-11.8 20.7-10.6 31.8 1 9.5 5.3 18.6 12.6 25.3 5 4.6 11.2 8 18.5 9.5 7.6 1.5 15.7 1 27.5-1.4 6.3-1.3 12.2-3.2 17.8-6.6 5.5-3.3 10.3-7.6 14-13 3.7-5.3 6.1-11.3 7.5-17.6 1.4-6.5 1.7-12.4 1.7-18.9v-165c0-8.8 2.5-11.2 9.6-12.9 0 0 126.5-25.5 132.4-26.7 8.2-1.6 12.1.8 12.1 9.4v112.8c0 4.5 0 9-3.1 12.7-3 3.7-6.7 4.8-11.1 5.7-3.3.7-6.6 1.3-9.9 2-12.6 2.5-20.8 4.3-28.2 7.1-7.1 2.7-12.4 6.2-16.6 10.7-8.4 8.8-12.1 20.7-10.9 31.8 1 9.5 5.6 18.6 12.9 25.3 5 4.6 11.2 7.9 18.5 9.4 7.6 1.5 15.7 1 27.5-1.4 6.3-1.3 12.2-3.2 17.8-6.5 5.5-3.3 10.3-7.6 14-13 3.7-5.3 6.1-11.3 7.5-17.6 1.4-6.5 1.4-12.4 1.4-18.9V91.7c-.1-8.8-4.7-14.2-12.9-13.5" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"/></svg>
                                 <span>Apple Music</span>
                             </a>
                         </div>
@@ -460,10 +448,10 @@
                 <span>DJKridP</span>
             </div>
             <!-- DMCA Badge -->
-            <a href="https://www.dmca.com/r/k93j1jg" title="DMCA.com Protection Status" class="dmca-badge">
+            <!-- <a href="https://www.dmca.com/r/k93j1jg" title="DMCA.com Protection Status" class="dmca-badge">
                 <img src="https://images.dmca.com/Badges/dmca-badge-w250-5x1-02.png?ID=c23022d2-174a-45f3-a198-188a70313323" alt="DMCA.com Protection Status" />
             </a>
-            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+            <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script> -->
         </div>
     </footer>
 
