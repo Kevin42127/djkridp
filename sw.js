@@ -1,4 +1,4 @@
-const CACHE_NAME = 'djkridp-v4'; // Versionsnummer aktualisiert, um alten Cache zu löschen
+const CACHE_NAME = 'djkridp-v5'; // Versionsnummer aktualisiert, um alten Cache zu löschen
 const urlsToCache = [
   '/',
   '/index.html',
@@ -81,43 +81,23 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Für CSS/JS-Dateien Cache-Priorität verwenden, aber auf Updates prüfen
+  // Für CSS/JS-Dateien Netzwerk-Priorität verwenden, Cache als Offline-Fallback
   if (event.request.url.includes('/css/') || event.request.url.includes('/js/')) {
     event.respondWith(
-      caches.match(event.request)
-        .then(cachedResponse => {
-          // Zuerst Netzwerk prüfen, ob Updates verfügbar sind
-          const fetchPromise = fetch(event.request)
-            .then(networkResponse => {
-              // Netzwerk erfolgreich, Cache aktualisieren
-              caches.open(CACHE_NAME)
-                .then(cache => {
-                  cache.put(event.request, networkResponse.clone());
-                });
-              return networkResponse;
-            })
-            .catch(() => {
-              // Netzwerk fehlgeschlagen, Cache verwenden
-              return cachedResponse;
-            });
-
-          // Wenn Cache vorhanden, zuerst zurückgeben und im Hintergrund aktualisieren
-          if (cachedResponse) {
-            // Im Hintergrund auf Updates prüfen
-            fetch(event.request)
-              .then(networkResponse => {
-                if (networkResponse.ok) {
-                  caches.open(CACHE_NAME)
-                    .then(cache => {
-                      cache.put(event.request, networkResponse);
-                    });
-                }
+      fetch(event.request)
+        .then(networkResponse => {
+          if (networkResponse.ok) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME)
+              .then(cache => {
+                cache.put(event.request, responseToCache);
               });
-            return cachedResponse;
           }
-
-          // Kein Cache vorhanden, auf Netzwerk warten
-          return fetchPromise;
+          return networkResponse;
+        })
+        .catch(() => {
+          // Netzwerk fehlgeschlagen, Cache verwenden
+          return caches.match(event.request);
         })
     );
     return;
