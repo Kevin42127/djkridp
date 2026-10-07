@@ -111,7 +111,7 @@
   
   .country-list {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
   }
   
   .works-grid {
@@ -135,10 +135,6 @@
     grid-column: auto;
   }
   
-  .contact-card {
-    padding: var(--spacing-lg);
-  }
-
   .contact-link {
     width: 100%;
     justify-content: center;
@@ -220,6 +216,10 @@
   
   .country-list {
     grid-template-columns: 1fr;
+  }
+
+  .country-item {
+    padding: var(--spacing-md);
   }
 
   .section-title {
