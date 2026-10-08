@@ -105,7 +105,7 @@
   position: absolute;
   width: 0;
   height: 2px;
-  background-color: #A855F7;
+  background-color: var(--neon-purple);
   transition: width 0.3s ease;
 }
 
@@ -130,7 +130,7 @@
   position: absolute;
   width: 2px;
   height: 0;
-  background-color: #A855F7;
+  background-color: var(--neon-purple);
   transition: height 0.3s ease;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .nav-link:hover {
-  color: #A855F7;
+  color: var(--neon-purple);
   border-radius: 4px;
 }
 
@@ -194,7 +194,7 @@
 .hero-title {
   font-size: var(--font-size-display-mobile);
   margin-bottom: var(--spacing-lg);
-  color: #ffffff;
+  color: var(--on-surface-strong);
   font-family: var(--font-family-display);
   font-weight: 900;
   letter-spacing: -0.02em;
@@ -414,7 +414,7 @@
 .card-title {
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-md);
-  color: #ffffff;
+  color: var(--on-surface-strong);
   font-weight: 700;
   line-height: 1.3;
 }
@@ -427,7 +427,7 @@
 .card h2,
 .card h3 {
   margin-bottom: var(--spacing-md);
-  color: #ffffff;
+  color: var(--on-surface-strong);
 }
 
 .card p {
@@ -586,19 +586,46 @@
 }
 
 
-#about .content-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  gap: var(--spacing-xl);
+.timeline {
+  position: relative;
+  padding-left: 48px;
 }
 
-#about .card:nth-child(1),
-#about .card:nth-child(2),
-#about .card:nth-child(3),
-#about .card:nth-child(4) {
-  grid-column: auto;
-  grid-row: auto;
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: var(--spacing-md);
+  bottom: var(--spacing-md);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--neon-purple), var(--electric-cyan));
+  border-radius: 1px;
+  opacity: 0.8;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+.timeline-item + .timeline-item {
+  margin-top: var(--spacing-2xl);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -39px;
+  top: var(--spacing-xl);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--midnight-base);
+  border: 3px solid var(--neon-purple);
+  box-shadow: 0 0 10px var(--neon-purple-glow);
+}
+
+.timeline-item:last-child .timeline-dot {
+  border-color: var(--electric-cyan);
+  box-shadow: 0 0 10px var(--electric-cyan-glow);
 }
 
 #about .card {
@@ -720,7 +747,7 @@
 
 .country-item h3 {
   margin-bottom: 0;
-  color: #ffffff;
+  color: var(--on-surface-strong);
   font-weight: 500;
   font-size: var(--font-size-sm);
   line-height: 32px;
@@ -816,7 +843,7 @@
   margin-top: var(--spacing-sm);
   text-align: center;
   font-size: 10px;
-  color: #cccccc;
+  color: var(--on-surface-variant);
   line-break: anywhere;
   word-break: normal;
   overflow: hidden;
@@ -827,13 +854,13 @@
 }
 
 .soundcloud-credits a {
-  color: #cccccc;
+  color: var(--on-surface-variant);
   text-decoration: none;
   transition: color var(--transition-base);
 }
 
 .soundcloud-credits a:hover {
-  color: #ffffff;
+  color: var(--on-surface-strong);
 }
 
 @media (max-width: 768px) {
@@ -1558,7 +1585,7 @@
   font-size: clamp(28px, 6vw, 40px);
   line-height: 48px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--on-surface-strong);
   margin-bottom: var(--spacing-3xl);
 }
 
@@ -1629,7 +1656,7 @@
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius-full);
-  color: #ffffff;
+  color: var(--on-surface-strong);
   font-weight: 500;
   font-size: var(--font-size-sm);
   text-decoration: none;
@@ -2158,7 +2185,7 @@ body > footer.footer {
   min-width: 100%;
   font-size: var(--font-size-2xl);
   font-weight: 900;
-  color: #ffffff;
+  color: var(--color-text-white);
   text-transform: uppercase;
   letter-spacing: 2px;
   margin: 0;
@@ -3105,4 +3132,37 @@ body > footer.footer {
   .quick-question-btn .material-symbols-outlined {
     font-size: 18px;
   }
+}
+
+/* Scroll Spine — scroll-drawn connector line */
+.scroll-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(12px, 2.5vw, 40px);
+  width: 4px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.scroll-spine svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.spine-track-line {
+  fill: none;
+  stroke: var(--surface-container-high);
+  stroke-width: 2;
+}
+
+.spine-line {
+  fill: none;
+  stroke: var(--neon-purple);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
 }

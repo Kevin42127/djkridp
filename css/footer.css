@@ -19,7 +19,7 @@
 }
 
 .footer-email-link:hover {
-  color: #cccccc;
+  color: var(--on-surface-variant);
   text-decoration: underline;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .footer-sitemap-link:hover {
-  color: #cccccc;
+  color: var(--on-surface-variant);
   text-decoration: underline;
 }
 

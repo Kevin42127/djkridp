@@ -82,7 +82,7 @@
   }
 
   .nav-link:hover {
-    color: #ffffff;
+    color: var(--on-surface-strong);
     border-radius: 4px;
     text-align: center;
     text-decoration: none;
@@ -116,19 +116,6 @@
   
   .works-grid {
     grid-template-columns: 1fr;
-  }
-
-  #about .content-section {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
-  }
-
-  #about .card:nth-child(1),
-  #about .card:nth-child(2),
-  #about .card:nth-child(3),
-  #about .card:nth-child(4) {
-    grid-column: auto !important;
-    grid-row: auto !important;
   }
 
   .works-grid .card:nth-child(3) {
@@ -297,7 +284,7 @@
   }
 
   .nav-link:hover {
-    color: #ffffff;
+    color: var(--color-text-white);
     background: var(--neon-purple);
   }
   
